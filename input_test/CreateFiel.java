@@ -1,12 +1,9 @@
-
 public class CreateFiel {
 
 	public static void main(String[] args) {
 
-		Input in = new Input("D:\\trawniczek\\lawn.txt");
-		int i = in.checkIfExists();
-		System.out.println(i);
-		i = in.readFromFile();
+		Input in = new Input("D:\\pobrane\\lawn.txt");
+		int i = in.readFromFile();
 		System.out.println(i);
 		
 		if(i == 0) {
@@ -19,6 +16,7 @@ public class CreateFiel {
 			System.out.println();
 			}
 		}
+		System.out.println(in.getXSize() + " " + in.getYSize());
 	}
 
 }
