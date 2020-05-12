@@ -29,6 +29,7 @@ public class Output {
 		Iterator<Sprinkler> it = list.iterator();
 		try {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+			pw.println("Liczba wszytskich podlewaczek: " + list.size()+ "\n");
 			while(it.hasNext())	{
 				pw.println(it.next());
 			}
@@ -36,7 +37,4 @@ public class Output {
 		}
 		catch(IOException e) {JOptionPane.showMessageDialog(null, "Couldn't write to file", "Error", JOptionPane.PLAIN_MESSAGE);}
 	}
-	
-	
-
 }

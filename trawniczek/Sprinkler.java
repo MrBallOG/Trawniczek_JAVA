@@ -22,7 +22,7 @@ public class Sprinkler {
 	@Override
 	public String toString() {
 		if(type == 90)
-			return String.format("typ: %d,  koordynaty: (%d, %d), cwiartka zajeta: %d\n", type, x, y, deg);
+			return String.format("typ: %d,   koordynaty: (%d, %d), cwiartka zajeta: %d\n", type, x, y, deg);
 		else if(type == 270)
 			return String.format("typ: %d,  koordynaty: (%d, %d), cwiartka pusta: %d\n", type, x, y, deg);
 		else if(type == 180) {
