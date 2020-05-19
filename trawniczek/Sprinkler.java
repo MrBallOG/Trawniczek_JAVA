@@ -7,7 +7,7 @@ public class Sprinkler {
 	private int y;
 	private int deg; //nr cwiartki która jest: 90 zajeta, 270 pusta, 180 12 to 1 i 2 zajeta
 	
-	public Sprinkler(int type, int x, int y) {
+	public Sprinkler(int type, int x, int y) { //360 sprinkler
 		this(type, x, y, 0);
 	}
 	

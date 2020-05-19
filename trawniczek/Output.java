@@ -7,7 +7,6 @@ import javax.swing.*;
 public class Output {
 
 	private String filename = "D:\\pobrane\\fred.txt";
-	private PrintWriter pw = null;
 	private File file = null;
 	private List<Sprinkler> list;
 	
@@ -27,13 +26,11 @@ public class Output {
 	public void printToFile() {
 		createFile();
 		Iterator<Sprinkler> it = list.iterator();
-		try {
-			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))){
 			pw.println("Liczba wszytskich podlewaczek: " + list.size()+ "\n");
 			while(it.hasNext())	{
 				pw.println(it.next());
 			}
-			pw.close();
 		}
 		catch(IOException e) {JOptionPane.showMessageDialog(null, "Couldn't write to file", "Error", JOptionPane.PLAIN_MESSAGE);}
 	}

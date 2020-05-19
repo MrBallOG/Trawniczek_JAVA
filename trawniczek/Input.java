@@ -5,7 +5,6 @@ import javax.swing.*;
 
 public class Input {
 
-	private BufferedReader bf = null;
 	private File file = null;
 	private char lawn[][];
 	private String filename;
@@ -18,29 +17,32 @@ public class Input {
 	
 	public int readFromFile() {
 		
+		String temp;
 		file = new File(filename);
 		if(!file.exists()) {
 			JOptionPane.showMessageDialog(null, "File not exists", "Error", JOptionPane.PLAIN_MESSAGE);
 			return 1;
 		}
 		
-		try {
-		bf = new BufferedReader(new FileReader(file));
-		String temp = bf.readLine();
+		try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
+		temp = bf.readLine();
 		x_size = temp.length();
 		
 		while(bf.readLine() != null)
 		{
 			y_size++;
 		}
-		bf.close();
+		} catch(IOException e) {
+			JOptionPane.showMessageDialog(null, "Couldn't read file", "Error", JOptionPane.PLAIN_MESSAGE);
+			return 6;
+		}
 		
 		if(x_size > 80 || y_size >40) {
 			JOptionPane.showMessageDialog(null, "Lawn is bigger than max size 40x80: "+y_size+"x"+ x_size, "Error", JOptionPane.PLAIN_MESSAGE);
 			return 2;
 		}
 		
-		bf = new BufferedReader(new FileReader(file));
+		try (BufferedReader bf = new BufferedReader(new FileReader(file))){
 		lawn = new char[100*y_size][100*x_size];
 		int i = 0;
 		
@@ -71,13 +73,10 @@ public class Input {
 			i++;
 			}
 		}
-		
-		bf.close();
-		}
-		catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Couldn't write to file", "Error", JOptionPane.PLAIN_MESSAGE);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Couldn't read file", "Error", JOptionPane.PLAIN_MESSAGE);
 			return 6;
-			}     
+		}     
 		
 		return 0;
 	}
