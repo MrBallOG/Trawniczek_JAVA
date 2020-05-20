@@ -16,12 +16,15 @@ public class Gui {
 	private JLabel file_path;
 	private JLabel rebound;
 	private JLabel num_of_iterations;
+	private JLabel time;
 	private JTextField get_file_path;
 	private JTextField get_num_of_iterations;
+	private JTextField get_time;
 	private Color background_color;
 	private Input in;
 	private Animation anime;
-	private int time;
+	private int num;
+	private int period;
 	private int error = 1;
 	private boolean set_rebounds = true;
 	
@@ -39,20 +42,24 @@ public class Gui {
 		no = new JRadioButton("nie", false);
 		file_path = new JLabel("Podaj œcie¿kê dostêpu:");
 		rebound = new JLabel("Czy odbicia?");
-		num_of_iterations = new JLabel("Ile ma trwaæ podlewanie(min)?");
+		num_of_iterations = new JLabel("Liczba cykli:");
+		time = new JLabel("Okres cyklu(s):");
 		get_file_path = new JTextField(30);
 		get_num_of_iterations = new JTextField(10);
+		get_time = new JTextField(10);
 		
 		first.setLayout(null);
-		file_path.setBounds(510, 30, 150, 30);
-		get_file_path.setBounds(510, 60, 150, 30);
-		rebound.setBounds(510, 90, 150, 30);
-		yes.setBounds(505, 120, 45, 30);
+		file_path.setBounds(500, 30, 150, 30);
+		get_file_path.setBounds(500, 60, 350, 30);
+		rebound.setBounds(500, 90, 150, 30);
+		yes.setBounds(495, 120, 45, 30);
 		yes.setBackground(background_color);
-		no.setBounds(555, 120, 45, 30);
+		no.setBounds(545, 120, 45, 30);
 		no.setBackground(background_color);
-		num_of_iterations.setBounds(510, 150, 180, 30);
-		get_num_of_iterations.setBounds(510, 180, 40, 30);
+		num_of_iterations.setBounds(500, 150, 180, 30);
+		get_num_of_iterations.setBounds(500, 180, 40, 30);
+		time.setBounds(500, 210, 180, 30);
+		get_time.setBounds(500, 240, 40, 30);
 		next_screen.setBounds(565, 520, 70, 30);
 		
 		first.add(file_path);
@@ -62,6 +69,8 @@ public class Gui {
 		first.add(no);
 		first.add(num_of_iterations);
 		first.add(get_num_of_iterations);
+		first.add(time);
+		first.add(get_time);
 		first.add(next_screen);
 		
 		group = new ButtonGroup();
@@ -76,28 +85,33 @@ public class Gui {
 		next_screen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(get_file_path.getText().trim().isEmpty() || get_num_of_iterations.getText().trim().isEmpty()) {
+				if(get_file_path.getText().trim().isEmpty() || get_num_of_iterations.getText().trim().isEmpty() || get_time.getText().trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Puste pola", "Error", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
 				else
 					try {
-						time = Integer.parseInt(get_num_of_iterations.getText().trim());
-						if(time == 0) {
-							JOptionPane.showMessageDialog(null, "Czas nie moze byc zerem", "Error", JOptionPane.PLAIN_MESSAGE);
+						num = Integer.parseInt(get_num_of_iterations.getText().trim());
+						if(num <= 0) {
+							JOptionPane.showMessageDialog(null, "Liczba cykli musi byc > 0", "Error", JOptionPane.PLAIN_MESSAGE);
+							return;
+						}
+						period = Integer.parseInt(get_time.getText().trim());
+						if(period <= 0) {
+							JOptionPane.showMessageDialog(null, "Okres musi byc > 0", "Error", JOptionPane.PLAIN_MESSAGE);
 							return;
 						}
 					}catch(NumberFormatException ex) {
-						JOptionPane.showMessageDialog(null, "To nie liczba", "Error", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "To nie liczba naturalna", "Error", JOptionPane.PLAIN_MESSAGE);
 						return;
 					}
 				in = new Input(get_file_path.getText().trim());
 				error = in.readFromFile();
 				if(error == 0) {
-					anime = new Animation();
+					anime = new Animation(in.getLawn(), num, period, set_rebounds);
 					container.add(anime, "2");      
 					cl.show(container, "2");
-					System.out.println(time + "  " + set_rebounds);
+					System.out.println(num + " "+ period +  " " + set_rebounds);
 				}
 			}
 		});
