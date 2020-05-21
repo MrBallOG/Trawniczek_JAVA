@@ -19,7 +19,6 @@ public class Animation extends JPanel {
 	private int center_y;
 	private Thread animate;   //animate
 	private Thread calculate;//lawnhodler
-	private boolean running;
 	private BlockingQueue<short[][]> q = new ArrayBlockingQueue<short[][]>(1);
 	private PositionSprinklers ps;
 	private Animate an;
@@ -31,9 +30,9 @@ public class Animation extends JPanel {
 		this.period = period;
 		this.rebounds = rebounds;
 		setLayout(new BorderLayout());
+		calculate();
 		animate();
 		add(an, BorderLayout.CENTER);
-		calculate();
 		
 	}
 	
@@ -78,13 +77,13 @@ public class Animation extends JPanel {
 		@Override
 		public void run() {
 			while(ps.getRunning()) {
-			try {
-				lawn = q.take();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			repaint();
+				try {
+					lawn = q.take();
+				} catch (InterruptedException e) {
+				
+					e.printStackTrace();
+				}
+				repaint();
 			}
 		}
 		
@@ -93,7 +92,6 @@ public class Animation extends JPanel {
 			super.paintComponent(g);
 			center_x = (WIN_WIDTH - lawn[0].length/10)/2;
 			center_y = (WIN_HEIGHT - lawn.length/10)/2-20;
-			System.out.print(center_x +"y: "+ center_y+ " " + lawn.length/100 + " x:" + lawn[0].length/100);
 			short mode;
 			for(int i = 0; i<lawn.length/10; i++) {
 				for(int j = 0; j<lawn[0].length/10; j++) {

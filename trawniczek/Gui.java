@@ -43,7 +43,7 @@ public class Gui {
 		file_path = new JLabel("Podaj œcie¿kê dostêpu:");
 		rebound = new JLabel("Czy odbicia?");
 		num_of_iterations = new JLabel("Liczba cykli:");
-		time = new JLabel("Okres cyklu(s):");
+		time = new JLabel("Okres cyklu(0.1s):");
 		get_file_path = new JTextField(30);
 		get_num_of_iterations = new JTextField(10);
 		get_time = new JTextField(10);
@@ -111,7 +111,6 @@ public class Gui {
 					anime = new Animation(in.getLawn(), num, period, set_rebounds);
 					container.add(anime, "2");      
 					cl.show(container, "2");
-					System.out.println(num + " "+ period +  " " + set_rebounds);
 				}
 			}
 		});

@@ -24,24 +24,24 @@ public class PositionSprinklers implements Runnable{
 	public void run() {
 	int it = 0;
 		while(it<10) {
-		for(int i = 0; i<500; i++) {
-			for(int j = 0; j<500; j++) {
-				lawn[i][j]+=20;
+			try {
+				Thread.sleep(period*100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}
-		try {
-			q.put(lawn);
-		} catch (InterruptedException e) {
+			for(int i = 0; i<500; i++) {
+				for(int j = 0; j<500; j++) {
+					lawn[i][j]+=20;
+				}
+			}
+			try {
+				q.put(lawn);
+			} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		it++;
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				e.printStackTrace();
+			}
+			it++;
 		}
 		running = false;
 	}
