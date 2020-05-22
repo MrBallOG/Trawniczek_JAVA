@@ -97,9 +97,9 @@ public class Animation extends JPanel {
 				for(int j = 0; j<lawn[0].length/10; j++) {
 					mode = calculateMode(10*i, 10*j);
 					if(mode == 0)
-						g.setColor(Color.WHITE);
-					else if (mode == 1)
 						g.setColor(Color.BLACK);
+					else if (mode == 1)
+						g.setColor(Color.WHITE);                    //dorobic jakas bariere ze gnije trawa
 					else
 						g.setColor(new Color(0, 255-mode, 0));
 					g.fillRect(center_x+j, center_y+i, 1, 1);

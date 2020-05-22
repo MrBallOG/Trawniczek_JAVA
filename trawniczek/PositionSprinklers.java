@@ -12,26 +12,26 @@ public class PositionSprinklers implements Runnable{
 	private boolean rebounds;
 	private BlockingQueue<short[][]> q;
 	
-	public PositionSprinklers(short[][]lawn, int num, int period, boolean rebounds, BlockingQueue<short[][]> queue) {
+	public PositionSprinklers(short[][]lawn, int num, int period, boolean rebounds, BlockingQueue<short[][]> q) {
 		this.lawn = lawn;
 		this.num = num;
 		this.period = period;
 		this.rebounds = rebounds;
-		this.q = queue;
+		this.q = q;
 	}
 
 	@Override
 	public void run() {
-	int it = 0;
-		while(it<10) {
+		
+		while(num>0) {
 			try {
 				Thread.sleep(period*100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			for(int i = 0; i<500; i++) {
-				for(int j = 0; j<500; j++) {
+			for(int i = 100; i<500; i++) {
+				for(int j = 100; j<500; j++) {
 					lawn[i][j]+=20;
 				}
 			}
@@ -41,7 +41,7 @@ public class PositionSprinklers implements Runnable{
 			// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			it++;
+			num--;
 		}
 		running = false;
 	}
