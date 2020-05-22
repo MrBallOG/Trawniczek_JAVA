@@ -22,6 +22,10 @@ public class PositionSprinklers implements Runnable{
 
 	@Override
 	public void run() {
+		int countx = (lawn[0].length-400) / 282;
+		int county = (lawn.length-400) / 282;
+		int rx = ((lawn[0].length-400) % 282)/countx;
+		int ry = ((lawn.length-400) % 282)/county;
 		
 		while(num>0) {
 			try {
@@ -30,11 +34,9 @@ public class PositionSprinklers implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			for(int i = 100; i<500; i++) {
-				for(int j = 100; j<500; j++) {
-					lawn[i][j]+=20;
-				}
-			}
+			
+			position(rx, ry);
+
 			try {
 				q.put(lawn);
 			} catch (InterruptedException e) {
@@ -48,5 +50,25 @@ public class PositionSprinklers implements Runnable{
 	
 	public boolean getRunning() {
 		return running;
+	}
+	
+	public void position(int rx, int ry) {
+		int x0 = 200;
+		int y0 = 200;
+		
+		while(y0<=lawn.length-200) {
+			while(x0<=lawn[0].length-200) {	
+				if(lawn[y0][x0] != 0)
+					for(int yc = -200; yc<200; yc++)        //sprawdza czy jest przeszkoda
+						for(int xc = -200; xc<200; xc++) 
+							if(xc*xc+yc*yc <= 200*200) 
+								if(lawn[y0+yc][x0+xc] != 0)
+									lawn[y0+yc][x0+xc]+=10;
+				x0+=282+rx;
+			}
+				x0 = 200;
+				y0+=282+ry;
+			}
+		
 	}
 }
