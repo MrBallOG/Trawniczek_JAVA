@@ -2,12 +2,12 @@ package trawniczek;
 
 public class Sprinkler {
 
-	private int type;	//90/180/270/360
+	private int type;								// 90/180/270/360
 	private int x;
 	private int y;
-	private int deg; //nr cwiartki która jest: 90 zajeta, 270 pusta, 180 12 to 1 i 2 zajeta
+	private int deg; 								// number of quadrant that is: 90 filled, 270 empty, 180 -> 12 means 1, 2 filled
 	
-	public Sprinkler(int type, int x, int y) { //360 sprinkler
+	public Sprinkler(int type, int x, int y) { 		// 360 sprinkler
 		this(type, x, y, 0);
 	}
 	
@@ -18,7 +18,9 @@ public class Sprinkler {
 		this.deg = deg;
 	}
 	
-	
+	/*
+	 *  Used for writing to file 
+	 */
 	@Override
 	public String toString() {
 		if(type == 90)

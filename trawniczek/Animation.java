@@ -9,26 +9,26 @@ import javax.swing.*;
 
 public class Animation extends JPanel {
 	
-	private static final int WIN_HEIGHT = 600;
-	private static final int WIN_WIDTH = 1200;
+	private static final int WIN_HEIGHT = 600; 										  // height of the window
+	private static final int WIN_WIDTH = 1200; 										  // width of the window
 	private short[][]lawn;
 	private int num;
 	private int period;
-	private boolean rebounds;
+	private boolean set_rebounds;
 	private int center_x;
 	private int center_y;
-	private Thread animate;   //animate
-	private Thread calculate;//lawnhodler
-	private BlockingQueue<short[][]> q = new ArrayBlockingQueue<short[][]>(1);
-	private PositionSprinklers ps;
-	private Animate an;
+	private Thread animate;   										
+	private Thread calculate;													
+	private final BlockingQueue<short[][]> q = new ArrayBlockingQueue<short[][]>(1);   // used for concurrency
+	private PositionSprinklers ps;													   
+	private Animate an;																   
 	
 	
 	public Animation(short[][]lawn, int num, int period, boolean rebounds) {
 		this.lawn = lawn;
 		this.num = num;
 		this.period = period;
-		this.rebounds = rebounds;
+		this.set_rebounds = rebounds;
 		setLayout(new BorderLayout());
 		calculate();
 		animate();
@@ -36,6 +36,9 @@ public class Animation extends JPanel {
 		
 	}
 	
+	/*
+	 *  Creates thread that updates frame of animation 
+	 */
 	private void animate() {
 		an = new Animate();
 		
@@ -52,8 +55,11 @@ public class Animation extends JPanel {
 		worker.execute();
 	}
 	
+	/*
+	 *  Creates thread that updates lawn
+	 */
 	private void calculate() {
-		ps = new PositionSprinklers(lawn, num, period, rebounds, q);
+		ps = new PositionSprinklers(lawn, num, period, set_rebounds, q);
 		
 		SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
 			@Override
@@ -87,11 +93,14 @@ public class Animation extends JPanel {
 			}
 		}
 		
+		/*
+		 *  Creates frame of animation
+		 */
 		@Override
 		public void paintComponent(Graphics g) {   
 			super.paintComponent(g);
-			center_x = (WIN_WIDTH - lawn[0].length/10)/2;
-			center_y = (WIN_HEIGHT - lawn.length/10)/2-20;
+			center_x = (WIN_WIDTH - lawn[0].length/10)/2;           //determines starting point of drawing frame
+			center_y = (WIN_HEIGHT - lawn.length/10)/2-20;	
 			short mode;
 			for(int i = 0; i<lawn.length/10; i++) {
 				for(int j = 0; j<lawn[0].length/10; j++) {
@@ -102,13 +111,16 @@ public class Animation extends JPanel {
 						g.setColor(Color.WHITE);                    //dorobic jakas bariere ze gnije trawa
 					else
 						g.setColor(new Color(0, 255-mode, 0));
-					g.fillRect(center_x+j, center_y+i, 1, 1);
+					g.fillRect(center_x+j, center_y+i, 1, 1);      // creates pixel
 				}
 			}
 			
 			g.dispose();
 		}
 		
+		/*
+		 *  Looks for the most popular value inside 10x10 lawn square to settle color of pixel
+		 */
 		private short calculateMode(int i, int j) {
 			int count = 0;
 			short[] sorted = new short[100];

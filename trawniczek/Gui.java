@@ -8,25 +8,25 @@ public class Gui {
 
 	private JFrame frame;
 	private JPanel container;
-	private JPanel first;
+	private JPanel first;                       // first screen
 	private JButton next_screen;
-	private JRadioButton yes;
-	private JRadioButton no;
+	private JRadioButton yes;                   // sets rebounds true
+	private JRadioButton no;					
 	private ButtonGroup group;
-	private JLabel file_path;
-	private JLabel rebound;
-	private JLabel num_of_iterations;
-	private JLabel time;
+	private JLabel ask_for_file_path;
+	private JLabel ask_for_rebounds;
+	private JLabel ask_for_num_of_iterations;
+	private JLabel ask_for_period;
 	private JTextField get_file_path;
 	private JTextField get_num_of_iterations;
-	private JTextField get_time;
+	private JTextField get_period;
 	private Color background_color;
-	private Input in;
-	private Animation anime;
-	private int num;
-	private int period;
-	private int error = 1;
-	private boolean set_rebounds = true;
+	private Input in;                             // reads input file
+	private Animation anime;					  // creates animation
+	private int num;							  // number of iterations
+	private int period;                           // period of iteration
+	private int error = 1;						  // used to determine whether switch to next screen
+	private boolean set_rebounds = true;          // used to determine whether calculate rebounds of water
 	
 	public Gui() {
 		frame = new JFrame("trawniczek");
@@ -40,37 +40,37 @@ public class Gui {
 		next_screen = new JButton("dalej");
 		yes = new JRadioButton("tak", true);
 		no = new JRadioButton("nie", false);
-		file_path = new JLabel("Podaj œcie¿kê dostêpu:");
-		rebound = new JLabel("Czy odbicia?");
-		num_of_iterations = new JLabel("Liczba cykli:");
-		time = new JLabel("Okres cyklu(0.1s):");
+		ask_for_file_path = new JLabel("Podaj œcie¿kê dostêpu:");
+		ask_for_rebounds = new JLabel("Czy odbicia?");
+		ask_for_num_of_iterations = new JLabel("Liczba cykli:");
+		ask_for_period = new JLabel("Okres cyklu(0.1s):");
 		get_file_path = new JTextField(30);
 		get_num_of_iterations = new JTextField(10);
-		get_time = new JTextField(10);
+		get_period = new JTextField(10);
 		
 		first.setLayout(null);
-		file_path.setBounds(500, 30, 150, 30);
+		ask_for_file_path.setBounds(500, 30, 150, 30);
 		get_file_path.setBounds(500, 60, 350, 30);
-		rebound.setBounds(500, 90, 150, 30);
+		ask_for_rebounds.setBounds(500, 90, 150, 30);
 		yes.setBounds(495, 120, 45, 30);
 		yes.setBackground(background_color);
 		no.setBounds(545, 120, 45, 30);
 		no.setBackground(background_color);
-		num_of_iterations.setBounds(500, 150, 180, 30);
+		ask_for_num_of_iterations.setBounds(500, 150, 180, 30);
 		get_num_of_iterations.setBounds(500, 180, 40, 30);
-		time.setBounds(500, 210, 180, 30);
-		get_time.setBounds(500, 240, 40, 30);
+		ask_for_period.setBounds(500, 210, 180, 30);
+		get_period.setBounds(500, 240, 40, 30);
 		next_screen.setBounds(565, 520, 70, 30);
 		
-		first.add(file_path);
+		first.add(ask_for_file_path);
 		first.add(get_file_path);
-		first.add(rebound);
+		first.add(ask_for_rebounds);
 		first.add(yes);
 		first.add(no);
-		first.add(num_of_iterations);
+		first.add(ask_for_num_of_iterations);
 		first.add(get_num_of_iterations);
-		first.add(time);
-		first.add(get_time);
+		first.add(ask_for_period);
+		first.add(get_period);
 		first.add(next_screen);
 		
 		group = new ButtonGroup();
@@ -85,7 +85,7 @@ public class Gui {
 		next_screen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(get_file_path.getText().trim().isEmpty() || get_num_of_iterations.getText().trim().isEmpty() || get_time.getText().trim().isEmpty()) {
+				if(get_file_path.getText().trim().isEmpty() || get_num_of_iterations.getText().trim().isEmpty() || get_period.getText().trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Puste pola", "Error", JOptionPane.PLAIN_MESSAGE);
 					return;
 				}
@@ -96,7 +96,7 @@ public class Gui {
 							JOptionPane.showMessageDialog(null, "Liczba cykli musi byc > 0", "Error", JOptionPane.PLAIN_MESSAGE);
 							return;
 						}
-						period = Integer.parseInt(get_time.getText().trim());
+						period = Integer.parseInt(get_period.getText().trim());
 						if(period <= 0) {
 							JOptionPane.showMessageDialog(null, "Okres musi byc > 0", "Error", JOptionPane.PLAIN_MESSAGE);
 							return;

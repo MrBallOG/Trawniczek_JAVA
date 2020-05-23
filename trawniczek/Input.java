@@ -8,8 +8,8 @@ public class Input {
 	private File file = null;
 	private short lawn[][];
 	private String filename;
-	private int x_size;
-	private int y_size = 1; // reads first line before loop
+	private int x_size;					// size of lawn horizontal 
+	private int y_size = 1; 			// reads first line before loop
 	
 	public Input(String filename) {
 		this.filename = filename;
@@ -25,17 +25,16 @@ public class Input {
 		}
 		
 		try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
-		temp = bf.readLine();
-		if(temp == null) {
-			JOptionPane.showMessageDialog(null, "Lawn is too small", "Error", JOptionPane.PLAIN_MESSAGE);
-			return 2;
-		}
-		x_size = temp.length();
+			temp = bf.readLine();
+			if(temp == null) {
+				JOptionPane.showMessageDialog(null, "Lawn is too small", "Error", JOptionPane.PLAIN_MESSAGE);
+				return 2;
+			}
+			x_size = temp.length();
 		
-		while(bf.readLine() != null)
-		{
-			y_size++;
-		}
+			while(bf.readLine() != null) {
+				y_size++;
+			}
 		} catch(IOException e) {
 			JOptionPane.showMessageDialog(null, "Couldn't read file", "Error", JOptionPane.PLAIN_MESSAGE);
 			return 3;
@@ -47,21 +46,21 @@ public class Input {
 		}
 		
 		try (BufferedReader bf = new BufferedReader(new FileReader(file))){
-		lawn = new short[100*y_size][100*x_size];
-		int i = 0;
 		
-		while((temp = bf.readLine()) != null)
-		{
-			char arr[] = temp.toCharArray();
-			if(arr.length > x_size) {            
-				JOptionPane.showMessageDialog(null, "Lawn is too wide", "Error", JOptionPane.PLAIN_MESSAGE);	
-				return 5;
-			}
-			else if(arr.length < x_size) {
-				JOptionPane.showMessageDialog(null, "Lawn not wide enough", "Error", JOptionPane.PLAIN_MESSAGE);
-				return 6;
-			}
-			else {
+			lawn = new short[100*y_size][100*x_size];
+			int i = 0;
+		
+			while((temp = bf.readLine()) != null) {
+				char arr[] = temp.toCharArray();
+				if(arr.length > x_size) {            
+					JOptionPane.showMessageDialog(null, "Lawn is too wide", "Error", JOptionPane.PLAIN_MESSAGE);	
+					return 5;
+				}
+				else if(arr.length < x_size) {
+					JOptionPane.showMessageDialog(null, "Lawn not wide enough", "Error", JOptionPane.PLAIN_MESSAGE);
+					return 6;
+				}
+				else {
 					for(int j = 0; j<x_size; j++) {
 						if(arr[j] != '*' && arr[j] != '-') { 
 							JOptionPane.showMessageDialog(null, "Wrong syntax at (" + (i+1) + ", " + (j+1) + ")", "Error", JOptionPane.PLAIN_MESSAGE);
@@ -69,14 +68,14 @@ public class Input {
 						}
 						else {
 							if(arr[j] == '*')
-								fillSquare(i,j,(short)1); //lawn[i][j] = '1'; 
+								fillSquare(i,j,(short)1); 			// grass equals 1  
 							if(arr[j] == '-')
-								fillSquare(i,j,(short)0); //lawn[i][j] = '0'; 
+								fillSquare(i,j,(short)0); 			// obstacle equals 0 
 						}
 					}
-			i++;
+					i++;
+				}
 			}
-		}
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "Couldn't read file", "Error", JOptionPane.PLAIN_MESSAGE);
 			return 8;
@@ -85,6 +84,9 @@ public class Input {
 		return 0;
 	}
 	
+	/*
+	 *   Each character in input file translates to 100x100 square of lawn array
+	 */
 	private void fillSquare(int y, int x, short c) {
 		for (int j = 0; j < 100; j++)
 	    {
@@ -99,11 +101,4 @@ public class Input {
 		return lawn;
 	}
 	
-	public int getXSize() {
-		return x_size*100;
-	}
-	
-	public int getYSize() {
-		return y_size*100;
-	}
 }
