@@ -80,6 +80,9 @@ public class Animation extends JPanel {
 			setBackground(new Color(255, 145, 164));
 		}
 		
+		/*
+		 *  Queue q takes calculated values of lawn fields and updates frame of animation
+		 */
 		@Override
 		public void run() {
 			while(ps.getRunning()) {
@@ -108,10 +111,12 @@ public class Animation extends JPanel {
 					if(mode == 0)
 						g.setColor(Color.BLACK);
 					else if (mode == 1)
-						g.setColor(Color.WHITE);                    //dorobic jakas bariere ze gnije trawa
+						g.setColor(Color.WHITE);                    
+					else if (mode > 150)
+						g.setColor(new Color(184, 15, 10));			// overwatered, crimson red
 					else
-						g.setColor(new Color(0, 255-mode, 0));
-					g.fillRect(center_x+j, center_y+i, 1, 1);      // creates pixel
+						g.setColor(new Color(0, 255-mode, 0));		// shades of green
+					g.fillRect(center_x+j, center_y+i, 1, 1);       // creates pixel
 				}
 			}
 			

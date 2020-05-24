@@ -8,10 +8,10 @@ public class Output {
 
 	private String filename = "D:\\pobrane\\fred.txt";
 	private File file = null;
-	private List<Sprinkler> list;
+	private List<Sprinkler> sprlist;
 	
 	public Output(List<Sprinkler> list) {
-		this.list = list;
+		sprlist = list;
 	}
 	
 	private void createFile() {
@@ -25,9 +25,9 @@ public class Output {
 	
 	public void printToFile() {
 		createFile();
-		Iterator<Sprinkler> it = list.iterator();
+		Iterator<Sprinkler> it = sprlist.iterator();
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))){
-			pw.println("Liczba wszytskich podlewaczek: " + list.size()+ "\n");
+			pw.println("Liczba wszytskich podlewaczek: " + sprlist.size()+ "\n");
 			while(it.hasNext())	{
 				pw.println(it.next());
 			}

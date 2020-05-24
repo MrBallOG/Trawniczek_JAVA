@@ -43,7 +43,7 @@ public class Sprinkler {
 	}
 	
 	
-	public void putSprinkler(char lawn[][]) {
+	public void putSprinkler(short lawn[][], boolean set_rebounds) {
 		
 	}
 

@@ -1,6 +1,7 @@
 package trawniczek;
 
-import java.awt.Color;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class PositionSprinklers implements Runnable{
@@ -11,6 +12,7 @@ public class PositionSprinklers implements Runnable{
 	private int period;
 	private boolean set_rebounds;
 	private BlockingQueue<short[][]> q;
+	private List<Sprinkler> sprlist;				// List of sprinklers
 	
 	public PositionSprinklers(short[][]lawn, int num, int period, boolean rebounds, BlockingQueue<short[][]> q) {
 		this.lawn = lawn;
@@ -18,45 +20,81 @@ public class PositionSprinklers implements Runnable{
 		this.period = period;
 		this.set_rebounds = rebounds;
 		this.q = q;
+		// funkcja ustawiajaca podlewaczki
 	}
 
 	/*
-	 *  282 is 400(diameter) divided by square root of 2, it is used to minimize gaps between circles
-	 *  subtract 400 to make sure that first and last circle in row or column can fit
+	 *  Uses addSprinklers() to put sprinklers on the lawn and then incrementField() to update values of fields 
+	 *  Queue q passes lawn to Animation in order to update frame
 	 */
 	@Override
-	public void run() {
-		int countx = (lawn[0].length-400) / 282;                        
-		int county = (lawn.length-400) / 282;							 
-		int rx = countx > 0 ? ((lawn[0].length-400) % 282)/countx : 0;
-		int ry = county > 0 ? ((lawn.length-400) % 282)/county : 0;
+	public void run() {	
+		short iteration_number = 0;
 		
 		while(num>0) {
 			try {
 				Thread.sleep(period*100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			if(iteration_number == 0)
+				position();   //addSprinklers();  
+			else
+				incrementField(iteration_number);
 			
-			position(rx, ry);
-
 			try {
 				q.put(lawn);
 			} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			iteration_number++;
 			num--;
 		}
 		running = false;
 	}
 	
+	/*
+	 *  Stops animation thread
+	 */
 	public boolean getRunning() {
 		return running;
 	}
 	
-	public void position(int rx, int ry) {
+	/*
+	 *  Puts sprinkler on the lawn 
+	 */
+	public void addSprinklers() {
+		Iterator<Sprinkler> it = sprlist.iterator();
+		while(it.hasNext())
+			it.next().putSprinkler(lawn, set_rebounds);
+	}
+	
+	/*
+	 *  Increments values of fields for next animation frame
+	 *  Every grass field has basic value of 1, so in order to get value it should be incremented by, subtract 1 and divide by 
+	 *  current iteration number
+	 */
+	public void incrementField(short iteration_number) {
+		short temp;
+		for(int i = 0; i<lawn.length; i++)
+			for(int j = 0; j<lawn[0].length; j++) {
+				if(lawn[i][j] != 1 && lawn[i][j] != 0) {
+					temp = lawn[i][j]; 
+					lawn[i][j] = (short) ((temp - (short)1)/iteration_number + temp);
+				}
+			}
+	}
+	
+	/*
+	 *  282 is 400(diameter) divided by square root of 2, it is used to minimize gaps between circles
+	 *  subtract 400 to make sure that first and last circle in row or column can fit
+	 */
+	public void position() {  					//dodawaj do sprlist kolejne podelwaczki, trza zrobiæ
+		int countx = (lawn[0].length-400) / 282;                        
+		int county = (lawn.length-400) / 282;							
+		int rx = countx > 0 ? ((lawn[0].length-400) % 282)/countx : 0;	
+		int ry = county > 0 ? ((lawn.length-400) % 282)/county : 0;	
+		
 		int x0 = 200;
 		int y0 = 200;
 		
