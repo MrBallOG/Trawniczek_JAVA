@@ -1,39 +1,42 @@
 package trawniczek;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-
 import javax.swing.*;
 
 public class Animation extends JPanel {
 	
 	private static final int WIN_HEIGHT = 600; 										  // height of the window
 	private static final int WIN_WIDTH = 1200; 										  // width of the window
-	private short[][]lawn;
+	private final int center_x;
+	private final int center_y;
+	private short [][]lawn;
 	private int num;
 	private int period;
 	private boolean set_rebounds;
-	private int center_x;
-	private int center_y;
 	private Thread animate;   										
 	private Thread calculate;													
 	private final BlockingQueue<short[][]> q = new ArrayBlockingQueue<short[][]>(1);   // used for concurrency
 	private PositionSprinklers ps;													   
-	private Animate an;																   
+	private Animate an;
+	private Output out;
+	private BufferedImage buffimg;												       // stores image to be painted
 	
 	
-	public Animation(short[][]lawn, int num, int period, boolean rebounds) {
+	public Animation(short [][]lawn, int num, int period, boolean rebounds) {
 		this.lawn = lawn;
 		this.num = num;
 		this.period = period;
 		this.set_rebounds = rebounds;
+		center_x = (WIN_WIDTH - lawn[0].length/10)/2;           //determines starting point of drawing frame
+		center_y = (WIN_HEIGHT - lawn.length/10)/2-20;	
 		setLayout(new BorderLayout());
 		calculate();
 		animate();
-		add(an, BorderLayout.CENTER);
-		
+		add(an, BorderLayout.CENTER);	
 	}
 	
 	/*
@@ -94,6 +97,34 @@ public class Animation extends JPanel {
 				}
 				repaint();
 			}
+			paintBitmap();
+			out = new Output(ps.getSprlist());
+			out.printToFile();
+			out.createBitmap(buffimg);
+		}
+		
+		/*
+		 *  Saves last frame of animation in BufferedImage so it can be turned into a bitmap
+		 */
+		public void paintBitmap() {
+			buffimg = new BufferedImage(lawn[0].length/10, lawn.length/10, BufferedImage.TYPE_INT_RGB);
+			Graphics2D g2d = buffimg.createGraphics();
+			short mode;
+			for(int i = 0; i<lawn.length/10; i++) {
+				for(int j = 0; j<lawn[0].length/10; j++) {
+					mode = calculateMode(10*i, 10*j);
+					if(mode == 0)
+						g2d.setColor(Color.BLACK);
+					else if (mode == 1)
+						g2d.setColor(Color.WHITE);                    
+					else if (mode > 150)
+						g2d.setColor(new Color(184, 15, 10));			
+					else
+						g2d.setColor(new Color(0, 255-mode, 0));		
+					g2d.fillRect(j, i, 1, 1);       					
+				}
+			}
+			g2d.dispose();
 		}
 		
 		/*
@@ -102,8 +133,6 @@ public class Animation extends JPanel {
 		@Override
 		public void paintComponent(Graphics g) {   
 			super.paintComponent(g);
-			center_x = (WIN_WIDTH - lawn[0].length/10)/2;           //determines starting point of drawing frame
-			center_y = (WIN_HEIGHT - lawn.length/10)/2-20;	
 			short mode;
 			for(int i = 0; i<lawn.length/10; i++) {
 				for(int j = 0; j<lawn[0].length/10; j++) {
@@ -119,7 +148,6 @@ public class Animation extends JPanel {
 					g.fillRect(center_x+j, center_y+i, 1, 1);       // creates pixel
 				}
 			}
-			
 			g.dispose();
 		}
 		

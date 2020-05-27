@@ -1,6 +1,8 @@
 package trawniczek;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 
 public class Application {
@@ -23,12 +25,12 @@ public class Application {
 			}
 		}
 		System.out.println(in.getYSize() + "x" + in.getXSize());
-
+*//*
 		List <Sprinkler> s = new ArrayList<Sprinkler>();
 		for(int j = 0; j<10; j++) {
 			switch(j%4) {
 			case 0:
-				s.add(new Sprinkler(90, 52-j, j+100, 1));
+				s.add(new Sprinkler(90, 52-j, j+200, 1));
 				break;
 			case 1:
 				s.add(new Sprinkler(180, 58-j, j+10, 34));
@@ -52,6 +54,7 @@ public class Application {
 				new Gui();
 			}
 		});
+		
 	}
 
 }

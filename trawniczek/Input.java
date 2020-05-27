@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Input {
 
 	private File file = null;
-	private short lawn[][];
+	private short [][]lawn;
 	private String filename;
 	private int x_size;					// size of lawn horizontal 
 	private int y_size = 1; 			// reads first line before loop
@@ -26,7 +26,7 @@ public class Input {
 		
 		try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
 			temp = bf.readLine();
-			if(temp == null) {
+			if(temp == null || temp.length() == 0) {
 				JOptionPane.showMessageDialog(null, "Lawn is too small", "Error", JOptionPane.PLAIN_MESSAGE);
 				return 2;
 			}

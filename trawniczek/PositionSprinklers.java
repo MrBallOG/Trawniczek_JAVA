@@ -1,5 +1,6 @@
 package trawniczek;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -60,8 +61,29 @@ public class PositionSprinklers implements Runnable{
 		return running;
 	}
 	
+	public List<Sprinkler> getSprlist() {
+		sprlist = new ArrayList<Sprinkler>();                                //tymczasowe zeby cos zwracac
+		for(int j = 0; j<10; j++) {
+			switch(j%4) {
+			case 0:
+				sprlist.add(new Sprinkler(90, 52-j, j+100, 1));
+				break;
+			case 1:
+				sprlist.add(new Sprinkler(180, 58-j, j+10, 34));
+				break;
+			case 2:
+				sprlist.add(new Sprinkler(270, j+5, j, 3));
+				break;
+			case 3:
+				sprlist.add(new Sprinkler(360, 18-j, j+35));
+				break;
+			}
+		}
+		return sprlist;
+	}
+	
 	/*
-	 *  Puts sprinkler on the lawn 
+	 *  Puts sprinklers on the lawn 
 	 */
 	public void addSprinklers() {
 		Iterator<Sprinkler> it = sprlist.iterator();
