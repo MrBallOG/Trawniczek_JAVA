@@ -80,11 +80,12 @@ public class Animation extends JPanel {
 	private class Animate extends JPanel implements Runnable {
 
 		public Animate() {
-			setBackground(new Color(255, 145, 164));
+			setBackground(new Color(255, 145, 164));            // settles color of background so it matches color of first screen
 		}
 		
 		/*
-		 *  Queue q takes calculated values of lawn fields and updates frame of animation
+		 *  Takes calculated values of lawn fields from queue q and updates frame of animation
+		 *  After animation ends orders file with list of sprinklers and bitmap to be created
 		 */
 		@Override
 		public void run() {
@@ -97,16 +98,17 @@ public class Animation extends JPanel {
 				}
 				repaint();
 			}
-			paintBitmap();
-			out = new Output(ps.getSprlist());
-			out.printToFile();
-			out.createBitmap(buffimg);
+			//paintBitmap();
+			//out = new Output(ps.getSprlist());
+			//out.printToFile();
+			//out.createBitmap(buffimg);
 		}
 		
 		/*
 		 *  Saves last frame of animation in BufferedImage so it can be turned into a bitmap
+		 *  Works like paintComponent()
 		 */
-		public void paintBitmap() {
+		private void paintBitmap() {
 			buffimg = new BufferedImage(lawn[0].length/10, lawn.length/10, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g2d = buffimg.createGraphics();
 			short mode;
@@ -128,7 +130,7 @@ public class Animation extends JPanel {
 		}
 		
 		/*
-		 *  Creates frame of animation
+		 *  Creates frame of animation by using 1x1 colored squares as pixels
 		 */
 		@Override
 		public void paintComponent(Graphics g) {   
@@ -183,7 +185,6 @@ public class Animation extends JPanel {
 
 			return count > current_max ? sorted[sorted.length-1] : mode;
 		}
-		
 		
 	}
 

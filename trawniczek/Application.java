@@ -1,8 +1,5 @@
 package trawniczek;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.*;
 
 public class Application {
@@ -10,7 +7,7 @@ public class Application {
 	public static void main(String[] args) {
 	
 		/*
-		Input in = new Input("C:\\Users\\huber\\OneDrive\\Pulpit\\proposed_design\\lawn.txt");
+		Input in = new Input("C:\\Users\\huber\\OneDrive\\Pulpit\\proposed_design\\lawnn.txt");
 		int i = in.readFromFile();
 		System.out.println(i);
 		

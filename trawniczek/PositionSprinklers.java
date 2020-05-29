@@ -25,8 +25,8 @@ public class PositionSprinklers implements Runnable{
 	}
 
 	/*
-	 *  Uses addSprinklers() to put sprinklers on the lawn and then incrementField() to update values of fields 
-	 *  Queue q passes lawn to Animation in order to update frame
+	 *  Uses addSprinklers() to put sprinklers on the lawn and then incrementField() to update values of fields for next frame of animation 
+	 *  Passes lawn to queue q in order to update frame
 	 */
 	@Override
 	public void run() {	
@@ -85,7 +85,7 @@ public class PositionSprinklers implements Runnable{
 	/*
 	 *  Puts sprinklers on the lawn 
 	 */
-	public void addSprinklers() {
+	private void addSprinklers() {
 		Iterator<Sprinkler> it = sprlist.iterator();
 		while(it.hasNext())
 			it.next().putSprinkler(lawn, set_rebounds);
@@ -96,7 +96,7 @@ public class PositionSprinklers implements Runnable{
 	 *  Every grass field has basic value of 1, so in order to get value it should be incremented by, subtract 1 and divide by 
 	 *  current iteration number
 	 */
-	public void incrementField(short iteration_number) {
+	private void incrementField(short iteration_number) {
 		short temp;
 		for(int i = 0; i<lawn.length; i++)
 			for(int j = 0; j<lawn[0].length; j++) {
@@ -112,6 +112,7 @@ public class PositionSprinklers implements Runnable{
 	 *  subtract 400 to make sure that first and last circle in row or column can fit
 	 */
 	public void position() {  					//dodawaj do sprlist kolejne podelwaczki, trza zrobiæ
+		/*
 		int countx = (lawn[0].length-400) / 282;                        
 		int county = (lawn.length-400) / 282;							
 		int rx = countx > 0 ? ((lawn[0].length-400) % 282)/countx : 0;	
@@ -133,6 +134,9 @@ public class PositionSprinklers implements Runnable{
 				x0 = 200;
 				y0+=282+ry;
 			}
-		
+			*/
+		Sprinkler s = new Sprinkler(90, 0, 500, 1);
+		s.putSprinkler(lawn, set_rebounds);
+						
 	}
 }
