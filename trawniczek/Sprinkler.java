@@ -63,17 +63,17 @@ public class Sprinkler {
 			waterlvl = 4;
 			switch(deg) {
 			case 1:
-				fillQuadrant1();
 				quadrant4 = false;
+				fillQuadrant1();
 			case 2:
-				fillQuadrant2();
 				quadrant1 = false;
+				fillQuadrant2();
 			case 3:
-				fillQuadrant3();
 				quadrant2 = false;
+				fillQuadrant3();
 			case 4:
-				fillQuadrant4();
 				quadrant3 = false;
+				fillQuadrant4();
 			}
 		}
 		else if(type == 270) {
@@ -81,31 +81,31 @@ public class Sprinkler {
 			waterlvl = 2;
 			switch(deg) {
 			case 1:
+				quadrant1 = false;
 				fillQuadrant2();
 				fillQuadrant3();
 				fillQuadrant4();
-				quadrant1 = false;
 				//removeStripeHorizontalNegative();
 				//removeStripeVerticalNegattive();
 			case 2:
+				quadrant2 = false;
 				fillQuadrant1();
 				fillQuadrant3();
 				fillQuadrant4();
-				quadrant2 = false;
 				//removeStripeHorizontalPositive();
 				//removeStripeVerticalNegattive();
 			case 3:
+				quadrant3 = false;
 				fillQuadrant1();
 				fillQuadrant2();
 				fillQuadrant4();
-				quadrant3 = false;
 				//removeStripeHorizontalPositive();
 				//removeStripeVerticalPositive();
 			case 4:
+				quadrant4 = false;
 				fillQuadrant1();
 				fillQuadrant2();
 				fillQuadrant3();
-				quadrant4 = false;
 				//removeStripeHorizontalNegative();
 				//removeStripeVerticalPositive();
 			}
@@ -115,28 +115,28 @@ public class Sprinkler {
 			waterlvl = 3;
 			switch(deg) {
 			case 12:
-				fillQuadrant1();
-				fillQuadrant2();
 				quadrant3 = false;
 				quadrant4 = false;
+				fillQuadrant1();
+				fillQuadrant2();
 				//removeStripeVerticalPositive();
 			case 23:
-				fillQuadrant2();
-				fillQuadrant3();
 				quadrant1 = false;
 				quadrant4 = false;
+				fillQuadrant2();
+				fillQuadrant3();
 				//removeStripeHorizontalNegative();
 			case 34:
-				fillQuadrant3();
-				fillQuadrant4();
 				quadrant1 = false;
 				quadrant2 = false;
+				fillQuadrant3();
+				fillQuadrant4();
 				//removeStripeVerticalNegattive();
 			case 14:
-				fillQuadrant1();
-				fillQuadrant4();
 				quadrant2 = false;
 				quadrant3 = false;
+				fillQuadrant1();
+				fillQuadrant4();
 				//removeStripeHorizontalPositive();
 			}
 		}
