@@ -135,7 +135,7 @@ public class PositionSprinklers implements Runnable{
 				y0+=282+ry;
 			}
 			*/
-		Sprinkler s = new Sprinkler(90, 0, 500, 1);
+		Sprinkler s = new Sprinkler(90, 1000, 600, 2);
 		s.putSprinkler(lawn, set_rebounds);
 						
 	}

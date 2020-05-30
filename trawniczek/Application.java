@@ -8,6 +8,7 @@ public class Application {
 	
 		/*
 		Input in = new Input("C:\\Users\\huber\\OneDrive\\Pulpit\\proposed_design\\lawnn.txt");
+							  C:\\Users\\huber\\OneDrive\\Pulpit\\proposed_design\\empty.txt
 		int i = in.readFromFile();
 		System.out.println(i);
 		
