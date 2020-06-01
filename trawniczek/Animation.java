@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class Animation extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 	private static final int WIN_HEIGHT = 600; 										  // height of the window
 	private static final int WIN_WIDTH = 1200; 										  // width of the window
 	private final int center_x;
@@ -40,6 +41,7 @@ public class Animation extends JPanel {
 	}
 	
 	/*
+	 * 	Uses SwingWorker in order to keep GUI operational while waiting for update
 	 *  Creates thread that updates frame of animation 
 	 */
 	private void animate() {
@@ -59,6 +61,7 @@ public class Animation extends JPanel {
 	}
 	
 	/*
+	 *  Uses SwingWorker in order to keep GUI operational while preparing an update
 	 *  Creates thread that updates lawn
 	 */
 	private void calculate() {
@@ -85,7 +88,7 @@ public class Animation extends JPanel {
 		
 		/*
 		 *  Takes calculated values of lawn fields from queue q and updates frame of animation
-		 *  After animation ends orders file with list of sprinklers and bitmap to be created
+		 *  After animation ends, orders file with list of sprinklers and bitmap to be created
 		 */
 		@Override
 		public void run() {
@@ -98,10 +101,10 @@ public class Animation extends JPanel {
 				}
 				repaint();
 			}
-			//paintBitmap();
-			//out = new Output(ps.getSprlist());
-			//out.printToFile();
-			//out.createBitmap(buffimg);
+			paintBitmap();
+			out = new Output(ps.getSprlist());
+			out.writeToFile();
+			out.createBitmap(buffimg);
 		}
 		
 		/*
@@ -111,18 +114,9 @@ public class Animation extends JPanel {
 		private void paintBitmap() {
 			buffimg = new BufferedImage(lawn[0].length/10, lawn.length/10, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g2d = buffimg.createGraphics();
-			short mode;
 			for(int i = 0; i<lawn.length/10; i++) {
 				for(int j = 0; j<lawn[0].length/10; j++) {
-					mode = calculateMode(10*i, 10*j);
-					if(mode == 0)
-						g2d.setColor(Color.BLACK);
-					else if (mode == 1)
-						g2d.setColor(Color.WHITE);                    
-					else if (mode > 150)
-						g2d.setColor(new Color(184, 15, 10));			
-					else
-						g2d.setColor(new Color(0, 255-mode, 0));		
+					g2d.setColor(setColorOfPixel(i,j));		
 					g2d.fillRect(j, i, 1, 1);       					
 				}
 			}
@@ -135,22 +129,28 @@ public class Animation extends JPanel {
 		@Override
 		public void paintComponent(Graphics g) {   
 			super.paintComponent(g);
-			short mode;
 			for(int i = 0; i<lawn.length/10; i++) {
 				for(int j = 0; j<lawn[0].length/10; j++) {
-					mode = calculateMode(10*i, 10*j);
-					if(mode == 0)
-						g.setColor(Color.BLACK);
-					else if (mode == 1)
-						g.setColor(Color.WHITE);                    
-					else if (mode > 150)
-						g.setColor(new Color(184, 15, 10));			// overwatered, crimson red
-					else
-						g.setColor(new Color(0, 255-mode, 0));		// shades of green
+					g.setColor(setColorOfPixel(i,j));				// sets color of pixel
 					g.fillRect(center_x+j, center_y+i, 1, 1);       // creates pixel
 				}
 			}
 			g.dispose();
+		}
+		
+		/*
+		 *  Sets color of pixel depending on value of mode
+		 */
+		private Color setColorOfPixel(int i, int j) {
+			short mode = calculateMode(10*i, 10*j);
+			if(mode == 0)
+				return Color.BLACK;
+			else if (mode == 1)
+				return Color.WHITE;                    
+			else if (mode > 150)
+				return new Color(184, 15, 10);			// overwatered, crimson red
+			else
+				return new Color(0, 255-mode, 0);		// shades of green
 		}
 		
 		/*
@@ -185,10 +185,7 @@ public class Animation extends JPanel {
 
 			return count > current_max ? sorted[sorted.length-1] : mode;
 		}
-		
+
 	}
 
 }
-
-
-

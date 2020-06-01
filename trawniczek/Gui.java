@@ -40,7 +40,7 @@ public class Gui {
 		next_screen = new JButton("dalej");
 		yes = new JRadioButton("tak", true);
 		no = new JRadioButton("nie", false);
-		ask_for_file_path = new JLabel("Podaj œcie¿kê dostêpu:");
+		ask_for_file_path = new JLabel("Podaj sciezke dostepu:");
 		ask_for_rebounds = new JLabel("Czy odbicia?");
 		ask_for_num_of_iterations = new JLabel("Liczba cykli:");
 		ask_for_period = new JLabel("Okres cyklu(0.1s):");
@@ -120,6 +120,7 @@ public class Gui {
 		frame.setSize(1200, 600);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	
 	private class RadioButtonHandler implements ItemListener {

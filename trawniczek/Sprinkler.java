@@ -6,14 +6,10 @@ public class Sprinkler {
 	private int x0;									// x value of center of sprinkler
 	private int y0;									// y value of center of sprinkler
 	private int deg; 								// number of quadrant that is: 90 filled, 270 empty, 180 -> 12 means 1, 2 filled
-	private int radius;								// radius of sprinkler
-	private int waterlvl;							// amount of water for lawn to be watered
+	private int radius;								// radius of sprinkler: 360-200, 270-300, 180-400, 90-500
+	private int waterlvl;							// amount of water for lawn to be watered 360-1, 270-2, 180-3, 90-4
 	private short lawn[][];
 	private boolean set_rebounds;
-	private boolean quadrant1;
-	private boolean quadrant2;
-	private boolean quadrant3;
-	private boolean quadrant4;
 	
 	
 	public Sprinkler(int type, int x0, int y0) { 	// 360 sprinkler
@@ -28,7 +24,7 @@ public class Sprinkler {
 	}
 	
 	/*
-	 *  Used for writing to file 
+	 *  Used for writing to file, turns Sprinkler's field to text
 	 */
 	@Override
 	public String toString() {
@@ -54,7 +50,6 @@ public class Sprinkler {
 	/*
 	 *  Chooses which quadrants should be watered by given type of sprinkler
 	 */
-	
 	public void putSprinkler(short [][]lawn, boolean set_rebounds) {
 		this.lawn = lawn;
 		this.set_rebounds = set_rebounds;
@@ -63,19 +58,15 @@ public class Sprinkler {
 			waterlvl = 4;
 			switch(deg) {
 			case 1:
-				quadrant4 = false;
 				fillQuadrant1();
 				break;
 			case 2:
-				quadrant1 = false;
 				fillQuadrant2();
 				break;
 			case 3:
-				quadrant2 = false;
 				fillQuadrant3();
 				break;
 			case 4:
-				quadrant3 = false;
 				fillQuadrant4();
 				break;
 			}
@@ -85,37 +76,25 @@ public class Sprinkler {
 			waterlvl = 2;
 			switch(deg) {
 			case 1:
-				quadrant1 = false;
 				fillQuadrant2();
 				fillQuadrant3();
 				fillQuadrant4();
 				break;
-				//removeStripeHorizontalNegative();
-				//removeStripeVerticalNegattive();
 			case 2:
-				quadrant2 = false;
 				fillQuadrant1();
 				fillQuadrant3();
 				fillQuadrant4();
 				break;
-				//removeStripeHorizontalPositive();
-				//removeStripeVerticalNegattive();
 			case 3:
-				quadrant3 = false;
 				fillQuadrant1();
 				fillQuadrant2();
 				fillQuadrant4();
 				break;
-				//removeStripeHorizontalPositive();
-				//removeStripeVerticalPositive();
 			case 4:
-				quadrant4 = false;
 				fillQuadrant1();
 				fillQuadrant2();
 				fillQuadrant3();
 				break;
-				//removeStripeHorizontalNegative();
-				//removeStripeVerticalPositive();
 			}
 		}
 		else if(type == 180) {
@@ -123,33 +102,21 @@ public class Sprinkler {
 			waterlvl = 3;
 			switch(deg) {
 			case 12:
-				quadrant3 = false;
-				quadrant4 = false;
 				fillQuadrant1();
 				fillQuadrant2();
 				break;
-				//removeStripeVerticalPositive();
 			case 23:
-				quadrant1 = false;
-				quadrant4 = false;
 				fillQuadrant2();
 				fillQuadrant3();
 				break;
-				//removeStripeHorizontalNegative();
 			case 34:
-				quadrant1 = false;
-				quadrant2 = false;
 				fillQuadrant3();
 				fillQuadrant4();
 				break;
-				//removeStripeVerticalNegattive();
 			case 14:
-				quadrant2 = false;
-				quadrant3 = false;
 				fillQuadrant1();
 				fillQuadrant4();
 				break;
-				//removeStripeHorizontalPositive();
 			}
 		}
 		else {
@@ -159,221 +126,402 @@ public class Sprinkler {
 			fillQuadrant2();
 			fillQuadrant3();
 			fillQuadrant4();
-			waterField(0,0);                      // fillQuadrant() methods in case of 360 skip center point
-			//removeStripeHorizontalPositive();
-			//removeStripeHorizontalNegative();
-			//removeStripeVerticalPositive();
-			//removeStripeVerticalNegattive();
 		}
 	}
-
+	
+	/*
+	 *  fillQuadrant() methods skip x=0 column and y=0 row, but given how Animation class creates pixel, those fields are negligible
+	 */
 	private void fillQuadrant1() {
-		int startx = 0;
-		int starty = 1;
-		if(quadrant4 == false)
-			starty = 0;
-		
-		boolean no_obstacle = true;
-		int mirror_x = 0;
-		int mirror_y = 0;
-		int mirror_xy = 0;
-		int y_low = starty;
-		int y_high = 0;
-		int tanh = 0;
-		int tanl = 0;
-		int tanm = 0;
-		
-		for(int y = starty; y<=radius; y++)      
-			for(int x = startx; x<=radius; x++) 					
-				if(lawn[y0-y][x0+x] == 0){
-					if(lawn[y0-(y-1)][x0+x] != 0) {    			// przyp 1 pusto pod  
-						if(y-1 <= starty ) {
-							if(y-1 == starty ) { 
-								for(int xx = startx; x<=radius; x++) 
-									if(xx*xx+y*y <= radius*radius) 
-										waterField(xx,y);
-								y++;
-							}
-						}
-						else {
-							if(y_high != 0)
-								y_low = y_high;
-							y_high = y;
-							tanl = tanh;
-							tanh = y/x;
-							int temp_x = x;
-							while(inBoundsX(temp_x) && lawn[y0-y][x0+temp_x] == 0) {
-								if(temp_x*temp_x+y*y == radius*radius)
-									break;
-								temp_x++;
-							}
-							if(temp_x*temp_x+y*y == radius*radius) {
-								for(int yy = y_low; yy<=radius; yy++)
-									for(int xx = startx; xx<=radius; xx++)
-										if(lawn[y0-yy][x0+xx] != 0 && yy < y)
-											waterField(xx,yy);
-										else
-											if(yy>y && yy/xx < tanh )
-												mirrorOY(y, xx, yy);
-							}
-							else {
-								
-							}
-						} 
-					}
-					if (lawn[y0-(y+100)][x0+x] != 0) {  		// przyp 2 pusto nad
-						
-					}
-					if (lawn[y0-(y+100)][x0+x] == 0) { 			// przyp 3 nie pusto nad
-						y_high = y;
-						while(lawn[y0-(y_high)][x0+x] == 0)
-							y_high += 100;
-						
-					}
-					
-				}
-		
-		if(!no_obstacle) {
-			for(int y = y_high; y<=radius; y++)      
-				for(int x = startx; x<=radius; x++) 
-					if(x*x+y*y <= radius*radius) 					
-						waterField(x,y);
-		}
-		
-		if(no_obstacle) {
-			for(int y = starty; y<=radius; y++)      
-				for(int x = startx; x<=radius; x++) 
-					if(x*x+y*y <= radius*radius) 					
-						waterField(x,y);
-		}
+		quadrant1DownUp();
+		quadrant1LeftRight();
 	}
 	
 	private void fillQuadrant2() {
-		int startx = -1;
-		int starty = 0;
-		if(quadrant1 == false)
-			startx = 0;
-		
-		for(int y = starty; y<=radius; y++)      
-			for(int x = startx; x>=-radius; x--) 
-				if(x*x+y*y <= radius*radius) {					
-					//if(lawn[y0-y][x0+x] != 0)
-						waterField(x,y);
-				}
+		quadrant2DownUp();
+		quadrant2RightLeft();
 	}
 	
 	private void fillQuadrant3() {
-		int startx = 0;
-		int starty = -1;
-		if(quadrant2 == false)
-			starty = 0;
-		
-		for(int y = starty; y>=-radius; y--)      
-			for(int x = startx; x>=-radius; x--) 
-				if(x*x+y*y <= radius*radius) {					
-					if(lawn[y0-y][x0+x] != 0)
-						waterField(x,y);
-				}
+		quadrant3UpDown();
+		quadrant3RightLeft();
 	}
 	
 	private void fillQuadrant4() {
-		int startx = 1;
-		int starty = 0;
-		if(quadrant3 == false)
-			startx = 0;
-		
-		for(int y = starty; y>=-radius; y--)      
-			for(int x = startx; x<=radius; x++) 
-				if(x*x+y*y <= radius*radius) {					
-					if(lawn[y0-y][x0+x] != 0)
-						waterField(x,y);
+		quadrant4UpDown();
+		quadrant4LeftRight();
+	}
+	
+	/*
+	 *  Updates Lawn's first quadrant from south to north
+	 *  int i - used to count which column to update 
+	 *  int j - used to count pixels to update in column
+	 *  int xi - x coordinate of pixel to be watered
+	 *  int direction - indicates direction of water, 1 if water goes south, -1 if water goes north (rebounds)
+	 */
+	private void quadrant1DownUp() {
+		int i = y0-1;
+		//sprinkle towards south if you can (not a wall)
+		while(i >= y0 - radius && i >= 0 && lawn[i][x0] != 0)
+			{
+			int j = x0+1;
+			int xi;
+			int direction;
+			//bounce immediately if wall
+			if(x0 == lawn[0].length - 1 || lawn[i][x0+1] == 0)
+				{
+				xi = x0;
+				direction = -1;
+				}
+			else
+				{
+				xi = x0+1;
+				direction = 1;
+				}
+			//sprinkling towards south inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == 1)
+						lawn[i][xi] += waterlvl;
+				}
+				else 
+					lawn[i][xi] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(xi+direction == -1 || xi+direction == lawn[0].length || lawn[i][xi+direction] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					xi += direction;
+					}
+				++j;
+				}
+			--i;
+			}
+	}
+	
+	/*
+	 * Analogical to quadrant1DownUp(...) but updates first quadrant from west to east
+	 */
+	private void quadrant1LeftRight() {
+		int j = x0 + 1;
+		//sprinkle towards west if you can (not a wall)
+		while(j <= x0 + radius && j < lawn[0].length && lawn[y0][j] != 0)
+			{
+			int i = y0-1;
+			int yi;
+			int direction;
+			//bounce immediately if wall
+			if(y0 == 0 || lawn[y0-1][j] == 0)
+				{
+				yi = y0;
+				direction = 1;
+				}
+			else
+				{
+				yi = y0-1;
+				direction = -1;
+				}
+			//sprinkling towards west inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == -1)
+						lawn[yi][j] += waterlvl;
+				}
+				else
+					lawn[yi][j] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(yi+direction == -1 || yi+direction == lawn.length || lawn[yi+direction][j] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					yi += direction;
+					}
+				--i;
+				}
+			++j;
+			}
+	}
+	
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates second quadrant
+	 */
+	private void quadrant2DownUp() {
+			int i = y0-1;
+			//sprinkle towards north if you can (not a wall)
+			while(i >= y0 - radius && i >= 0 && lawn[i][x0] != 0)
+				{
+				int j = x0-1;
+				int xi;
+				int direction;
+				//bounce immediately if wall
+				if(x0 == 0 || lawn[i][x0-1] == 0)
+					{
+					xi = x0;
+					direction = 1;
+					}
+				else
+					{
+					xi = x0-1;
+					direction = -1;
+					}
+				//sprinkling towards north inside of a circle
+				while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+					{
+					if(!set_rebounds) {
+						if(direction == -1)
+							lawn[i][xi] += waterlvl;
+					}
+					else 
+						lawn[i][xi] += waterlvl;
+					//should the direction be changed (rebound)?
+					if(xi+direction == -1 || xi+direction == lawn[0].length || lawn[i][xi+direction] == 0)
+						{
+						direction *= -1;
+						}
+					else
+						{
+						xi += direction;
+						}
+					--j;
+					}
+				--i;
 				}
 	}
-	private boolean inBoundsX(int x) {
-		if(x0+x<lawn[0].length && x0+x>-1)
-			return true;
-		return false;
-	}
 	
-	private boolean inBoundsY(int y) {
-		if(y0-y<lawn.length && y0-y>-1 )
-			return true;
-		return false;
-	}
-	
-	private void waterField(int x, int y) {
-		if(inBoundsX(x) && inBoundsY(y))
-			lawn[y0-y][x0+x]+=waterlvl;
-		else if(!inBoundsX(x) && inBoundsY(y)) {
-			if(x0+x>=lawn[0].length)
-				mirrorOX(lawn[0].length-x0, x, y);
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates second quadrant from east to west
+	 */
+	private void quadrant2RightLeft() {
+		int j = x0 - 1;
+		//sprinkle towards west if you can (not a wall)
+		while(j >= x0 - radius && j >= 0 && lawn[y0][j] != 0)
+			{
+			int i = y0-1;
+			int yi;
+			int direction;
+			//bounce immediately if wall
+			if(y0 == 0 || lawn[y0-1][j] == 0)
+				{
+				yi = y0;
+				direction = 1;
+				}
 			else
-				mirrorOX(-1-x0, x, y);
-		}
-		else if(inBoundsX(x) && !inBoundsY(y)) {
-			if(y0-y>=lawn.length)
-				mirrorOY(-(lawn.length-x0), x, y);
-			else
-				mirrorOY(1+y0, x, y);
-		}
-		else {
-			int mirrorX;
-			int mirrorY;
-			if(x0+x>=lawn[0].length)
-				mirrorX = lawn[0].length-x0;
-			else
-				mirrorX = -1-x0;
-			if(y0-y>=lawn.length)
-				mirrorY = -(lawn.length-x0);
-			else
-				mirrorY = 1+y0;
-			mirrorOXOY(mirrorX,mirrorY, x, y);
-		}
-		
+				{
+				yi = y0-1;
+				direction = -1;
+				}
+			//sprinkling towards west inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == -1)
+						lawn[yi][j] += waterlvl;
+				}
+				else 
+					lawn[yi][j] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(yi+direction == -1 || yi+direction == lawn.length || lawn[yi+direction][j] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					yi += direction;
+					}
+				--i;
+				}
+			--j;
+			}
 	}
 	
-	private void mirrorOX(int mirror, int x, int y) {
-		if(set_rebounds == true) {
-			if(x > 0) {
-				x = 2*mirror - x - 1;
-				waterField(x, y);
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates third quadrant from north to south
+	 */
+	private void quadrant3UpDown() {
+		int i = y0+1;
+		//sprinkle towards north if you can (not a wall)
+		while(i <= y0 + radius && i < lawn.length && lawn[i][x0] != 0)
+			{
+			int j = x0-1;
+			int xi;
+			int direction;
+			//bounce immediately if wall
+			if(x0 == 0 || lawn[i][x0-1] == 0)
+				{
+				xi = x0;
+				direction = 1;
+				}
+			else
+				{
+				xi = x0-1;
+				direction = -1;
+				}
+			//sprinkling towards north inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == -1)
+						lawn[i][xi] += waterlvl;
+				}
+				else
+					lawn[i][xi] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(xi+direction == -1 || xi+direction == lawn[0].length || lawn[i][xi+direction] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					xi += direction;
+					}
+				--j;
+				}
+			++i;
 			}
-			else {
-				x = 2*mirror - x + 1;
-				waterField(x, y);
-			}
-		}
 	}
 	
-	private void mirrorOY(int mirror, int x, int y) {
-		if(set_rebounds == true) {
-			if(y > 0) {
-				y = 2*mirror - y - 1;
-				waterField(x, y);
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates third quadrant from east to west
+	 */
+	private void quadrant3RightLeft() {
+		int j = x0 - 1;
+		//sprinkle towards east if you can (not a wall)
+		while(j >= x0 - radius && j >= 0 && lawn[y0][j] != 0)
+			{
+			int i = y0+1;
+			int yi;
+			int direction;
+			//bounce immediately if wall
+			if(y0 == lawn.length - 1 || lawn[y0+1][j] == 0)
+				{
+				yi = y0;
+				direction = -1;
+				}
+			else
+				{
+				yi = y0+1;
+				direction = 1;
+				}
+			//sprinkling towards east inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == 1)
+						lawn[yi][j] += waterlvl;
+				}
+				else
+					lawn[yi][j] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(yi+direction == -1 || yi+direction == lawn.length || lawn[yi+direction][j] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					yi += direction;
+					}
+				++i;
+				}
+			--j;
 			}
-			else {
-				y = 2*mirror - y + 1;
-				waterField(x, y);
-			}
-		}
 	}
 	
-	private void mirrorOXOY(int mirror_x,int mirror_y, int x, int y) {
-		if(set_rebounds == true) {
-			if(x > 0) {
-				x = 2*mirror_x - x - 1;
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates fourth quadrant from north to south
+	 */
+	private void quadrant4UpDown() {
+		int i = y0+1;
+		//sprinkle towards south if you can (not a wall)
+		while(i <= y0 + radius && i < lawn.length && lawn[i][x0] != 0)
+			{
+			int j = x0+1;
+			int xi;
+			int direction;
+			//bounce immediately if wall
+			if(x0 == lawn[0].length - 1 || lawn[i][x0+1] == 0)
+				{
+				xi = x0;
+				direction = -1;
+				}
+			else
+				{
+				xi = x0+1;
+				direction = 1;
+				}
+			//sprinkling towards south inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == 1)
+						lawn[i][xi] += waterlvl;
+				}
+				else
+					lawn[i][xi] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(xi+direction == -1 || xi+direction == lawn[0].length || lawn[i][xi+direction] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					xi += direction;
+					}
+				++j;
+				}
+			++i;
 			}
-			else {
-				x = 2*mirror_x - x + 1;
-			}
-		
-			if(y > 0) {
-				y = 2*mirror_y - y - 1;
-			}
-			else {
-				y = 2*mirror_y - y + 1;
-			}
-			waterField(x, y);
-		}
 	}
+	
+	/*
+	 * Analogical to Quadrant1DownUp(...) but updates fourth quadrant from west to east
+	 */
+	private void quadrant4LeftRight() {
+		int j = x0 + 1;
+		//sprinkle towards east if you can (not a wall)
+		while(j <= x0 + radius && j < lawn[0].length && lawn[y0][j] != 0)
+			{
+			int i = y0+1;
+			int yi;
+			int direction;
+			//bounce immediately if wall
+			if(y0 == lawn.length - 1 || lawn[y0+1][j] == 0)
+				{
+				yi = y0;
+				direction = -1;
+				}
+			else
+				{
+				yi = y0+1;
+				direction = 1;
+				}
+			//sprinkling towards east inside of a circle
+			while((y0-i)*(y0-i)+(x0-j)*(x0-j) <= radius*radius)
+				{
+				if(!set_rebounds) {
+					if(direction == 1)
+						lawn[yi][j] += waterlvl;
+				}
+				else
+					lawn[yi][j] += waterlvl;
+				//should the direction be changed (rebound)?
+				if(yi+direction == -1 || yi+direction == lawn.length || lawn[yi+direction][j] == 0)
+					{
+					direction *= -1;
+					}
+				else
+					{
+					yi += direction;
+					}
+				++i;
+				}
+			++j;
+			}
+	}
+	
 }

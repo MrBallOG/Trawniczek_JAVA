@@ -9,9 +9,9 @@ import javax.swing.*;
 
 public class Output {
 
-	private String filename = "list_of_sprinklers.txt";
-	private String bitmapname = "bitmap.bmp";
-	private File file = null;
+	private String filename = "list_of_sprinklers.txt";             // name  of output file containing list of sprinklers
+	private String bitmapname = "bitmap.bmp";						// name of bitmap containing last frame of animation
+	private File file = null;										
 	private File bitmap = null;
 	private List<Sprinkler> sprlist;
 	
@@ -19,6 +19,9 @@ public class Output {
 		sprlist = list;
 	}
 	
+	/*
+	 *  Creates file if it doesn't exist, otherwise overwrites it
+	 */
 	private File createFile(String filename, File file) {
 		try {
 			file = new File(filename);
@@ -29,7 +32,11 @@ public class Output {
 		return file;
 	}
 	
-	public void printToFile() {
+	/*
+	 *  Writes to file information about used sprinklers
+	 *  Uses PrintWriter in order to utilize println method
+	 */
+	public void writeToFile() {
 		file = createFile(filename, file);
 		Iterator<Sprinkler> it = sprlist.iterator();
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))){
@@ -41,6 +48,9 @@ public class Output {
 		catch(IOException e) {JOptionPane.showMessageDialog(null, "Couldn't write to file", "Error", JOptionPane.PLAIN_MESSAGE);}
 	}
 	
+	/*
+	 *  Creates bitmap from last frame of animation saved in BufferedImage buffimg
+	 */
 	public void createBitmap(BufferedImage buffimg) {
 		bitmap = createFile(bitmapname, bitmap);
 		try {
