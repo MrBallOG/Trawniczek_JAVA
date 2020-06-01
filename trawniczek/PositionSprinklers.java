@@ -21,6 +21,7 @@ public class PositionSprinklers implements Runnable{
 		this.period = period;
 		this.set_rebounds = rebounds;
 		this.q = q;
+		sprlist = new ArrayList<Sprinkler>();
 		// funkcja ustawiajaca podlewaczki
 	}
 
@@ -62,14 +63,13 @@ public class PositionSprinklers implements Runnable{
 	}
 	
 	public List<Sprinkler> getSprlist() {
-		sprlist = new ArrayList<Sprinkler>();                                //tymczasowe zeby cos zwracac
-		for(int j = 0; j<10; j++) {
+		for(int j = 0; j<10; j++) {							//tymczasowe zeby cos zwracac
 			switch(j%4) {
 			case 0:
-				sprlist.add(new Sprinkler(90, 52-j, j+100, 1));
+				sprlist.add(new Sprinkler(90, 52-j, j+10, 1));
 				break;
 			case 1:
-				sprlist.add(new Sprinkler(180, 58-j, j+10, 34));
+				sprlist.add(new Sprinkler(180, 15-j, j+10, 34));
 				break;
 			case 2:
 				sprlist.add(new Sprinkler(270, j+5, j, 3));
@@ -135,7 +135,7 @@ public class PositionSprinklers implements Runnable{
 				y0+=282+ry;
 			}
 			*/
-		Sprinkler s = new Sprinkler(180, 1000, 600, 12);
+		Sprinkler s = new Sprinkler(360, 1000, 600, 4);
 		s.putSprinkler(lawn, set_rebounds);
 						
 	}

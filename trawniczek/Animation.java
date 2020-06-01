@@ -23,7 +23,7 @@ public class Animation extends JPanel {
 	private final BlockingQueue<short[][]> q = new ArrayBlockingQueue<short[][]>(1);   // used for concurrency
 	private PositionSprinklers ps;													   
 	private Animate an;
-	private Output out;
+	private Output out;																   // creates output file and bitmap
 	private BufferedImage buffimg;												       // stores image to be painted
 	
 	
@@ -32,12 +32,12 @@ public class Animation extends JPanel {
 		this.num = num;
 		this.period = period;
 		this.set_rebounds = rebounds;
-		center_x = (WIN_WIDTH - lawn[0].length/10)/2;           //determines starting point of drawing frame
-		center_y = (WIN_HEIGHT - lawn.length/10)/2-20;	
+		center_x = (WIN_WIDTH - lawn[0].length/10)/2;           // determines x value of starting point of drawing frame
+		center_y = (WIN_HEIGHT - lawn.length/10)/2-20;			// determines y value of starting point of drawing frame
 		setLayout(new BorderLayout());
 		calculate();
 		animate();
-		add(an, BorderLayout.CENTER);	
+		add(an, BorderLayout.CENTER);							// puts JPanel that shows animation in the center of this JPanel
 	}
 	
 	/*
@@ -101,10 +101,10 @@ public class Animation extends JPanel {
 				}
 				repaint();
 			}
-			paintBitmap();
-			out = new Output(ps.getSprlist());
-			out.writeToFile();
-			out.createBitmap(buffimg);
+			//paintBitmap();
+			//out = new Output(ps.getSprlist());
+			//out.writeToFile();
+			//out.createBitmap(buffimg);
 		}
 		
 		/*
@@ -147,10 +147,12 @@ public class Animation extends JPanel {
 				return Color.BLACK;
 			else if (mode == 1)
 				return Color.WHITE;                    
-			else if (mode > 150)
-				return new Color(184, 15, 10);			// overwatered, crimson red
+			else if (mode > 180)
+				return new Color(184, 15, 10);						// overwatered, crimson red
+			else if (mode < 60)
+				return new Color(245-2*mode, 255-mode, 50);			// not watered enough, yellowish to olive
 			else
-				return new Color(0, 255-mode, 0);		// shades of green
+				return new Color(0, 255-mode, 0);					// shades of green
 		}
 		
 		/*
