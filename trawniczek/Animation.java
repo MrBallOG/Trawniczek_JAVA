@@ -82,6 +82,8 @@ public class Animation extends JPanel {
 
 	private class Animate extends JPanel implements Runnable {
 
+		private static final long serialVersionUID = 1L;
+
 		public Animate() {
 			setBackground(new Color(255, 145, 164));            // settles color of background so it matches color of first screen
 		}
@@ -96,15 +98,15 @@ public class Animation extends JPanel {
 				try {
 					lawn = q.take();
 				} catch (InterruptedException e) {
-				
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Niespodziewane przerwanie animacji", "Error", JOptionPane.PLAIN_MESSAGE);
+					ps.animationGotInterrupted();
 				}
 				repaint();
 			}
-			//paintBitmap();
-			//out = new Output(ps.getSprlist());
-			//out.writeToFile();
-			//out.createBitmap(buffimg);
+			paintBitmap();
+			out = new Output(ps.getSprlist());
+			out.writeToFile();
+			out.createBitmap(buffimg);
 		}
 		
 		/*
@@ -149,10 +151,10 @@ public class Animation extends JPanel {
 				return Color.WHITE;                    
 			else if (mode > 180)
 				return new Color(184, 15, 10);						// overwatered, crimson red
-			else if (mode < 60)
+			else if (mode < 70)
 				return new Color(245-2*mode, 255-mode, 50);			// not watered enough, yellowish to olive
 			else
-				return new Color(0, 255-mode, 0);					// shades of green
+				return new Color(0, 280-mode, 0);					// shades of green
 		}
 		
 		/*

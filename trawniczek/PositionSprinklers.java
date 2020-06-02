@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
+import javax.swing.JOptionPane;
+
 public class PositionSprinklers implements Runnable{
 
 	private boolean running = true;
@@ -33,11 +35,12 @@ public class PositionSprinklers implements Runnable{
 	public void run() {	
 		short iteration_number = 0;
 		
-		while(num>0) {
+		while(num>0 && running != false) {
 			try {
 				Thread.sleep(period*100);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Niespodziewane przerwanie podlewania", "Error", JOptionPane.PLAIN_MESSAGE);
+				num = 0;
 			}
 			if(iteration_number == 0)
 				position();   //addSprinklers();  
@@ -47,7 +50,8 @@ public class PositionSprinklers implements Runnable{
 			try {
 				q.put(lawn);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Niespodziewane przerwanie podlewania", "Error", JOptionPane.PLAIN_MESSAGE);
+				num = 0;
 			}
 			iteration_number++;
 			num--;
@@ -56,10 +60,17 @@ public class PositionSprinklers implements Runnable{
 	}
 	
 	/*
-	 *  Stops animation thread
+	 *  Stops animation thread when all iterations are finished 
 	 */
 	public boolean getRunning() {
 		return running;
+	}
+	
+	/*
+	 *  Stops animation thread if it got interrupted
+	 */
+	public void animationGotInterrupted() {
+		running = false;
 	}
 	
 	public List<Sprinkler> getSprlist() {
@@ -69,10 +80,10 @@ public class PositionSprinklers implements Runnable{
 				sprlist.add(new Sprinkler(90, 52-j, j+10, 1));
 				break;
 			case 1:
-				sprlist.add(new Sprinkler(180, 15-j, j+10, 34));
+				sprlist.add(new Sprinkler(180, j, j+10, 34));
 				break;
 			case 2:
-				sprlist.add(new Sprinkler(270, j+5, j, 3));
+				sprlist.add(new Sprinkler(270, j+55, j, 3));
 				break;
 			case 3:
 				sprlist.add(new Sprinkler(360, 18-j, j+35));
@@ -135,7 +146,7 @@ public class PositionSprinklers implements Runnable{
 				y0+=282+ry;
 			}
 			*/
-		Sprinkler s = new Sprinkler(360, 1000, 600, 4);
+		Sprinkler s = new Sprinkler(270, 1000, 600, 4);
 		s.putSprinkler(lawn, set_rebounds);
 						
 	}

@@ -31,7 +31,7 @@ public class Input {
 		try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
 			temp = bf.readLine();
 			if(temp == null || temp.length() == 0) {
-				JOptionPane.showMessageDialog(null, "Pierwsza linia pliku (" + filename + ") jest pusta", "Error", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Pierwsza linia pliku jest pusta", "Error", JOptionPane.PLAIN_MESSAGE);
 				return 2;
 			}
 			x_size = temp.length();

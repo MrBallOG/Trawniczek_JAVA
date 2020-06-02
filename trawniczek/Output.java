@@ -28,16 +28,21 @@ public class Output {
 			if(!file.exists())
 				file.createNewFile();
 			}
-		catch(IOException e) {JOptionPane.showMessageDialog(null, "Couldn't open file", "Error", JOptionPane.PLAIN_MESSAGE);}
+		catch(IOException e) {
+			JOptionPane.showMessageDialog(null, "Blad w otwarciu/tworzeniu pliku", "Error", JOptionPane.PLAIN_MESSAGE);
+			return null;
+		}
 		return file;
 	}
 	
 	/*
 	 *  Writes to file information about used sprinklers
-	 *  Uses PrintWriter in order to utilize println method
+	 *  Uses PrintWriter in order to utilize println() method
 	 */
 	public void writeToFile() {
 		file = createFile(filename, file);
+		if(file == null)
+			return;
 		Iterator<Sprinkler> it = sprlist.iterator();
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))){
 			pw.println("Liczba wszytskich podlewaczek: " + sprlist.size()+ "\n");
@@ -45,7 +50,7 @@ public class Output {
 				pw.println(it.next());
 			}
 		}
-		catch(IOException e) {JOptionPane.showMessageDialog(null, "Couldn't write to file", "Error", JOptionPane.PLAIN_MESSAGE);}
+		catch(IOException e) {JOptionPane.showMessageDialog(null, "Blad w pisaniu do pliku", "Error", JOptionPane.PLAIN_MESSAGE);}
 	}
 	
 	/*
@@ -53,8 +58,10 @@ public class Output {
 	 */
 	public void createBitmap(BufferedImage buffimg) {
 		bitmap = createFile(bitmapname, bitmap);
+		if(bitmap == null)
+			return;
 		try {
 			ImageIO.write(buffimg, "bmp", bitmap);
-		} catch (IOException e) {JOptionPane.showMessageDialog(null, "Couldn't create bitmap", "Error", JOptionPane.PLAIN_MESSAGE);}
+		} catch (IOException e) {JOptionPane.showMessageDialog(null, "Blad w tworzeniu bitmapy", "Error", JOptionPane.PLAIN_MESSAGE);}
 	}
 }
