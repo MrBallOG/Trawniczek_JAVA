@@ -147,6 +147,7 @@ public class PositionSprinklers implements Runnable{
 				y0+=282+ry;
 			}
 			*/
+		scanTheLawnForRectangles();
 		Sprinkler s = new Sprinkler(270, 1000, 600, 4);
 		s.putSprinkler(lawn, set_rebounds);
 						
@@ -164,23 +165,27 @@ public class PositionSprinklers implements Runnable{
 		{
 			while (x0 < lawn[0].length)
 			{
-				if (lawn[y0][x0] != 0) // if not wall
+				if (lawn[y0][x0] > 0) // if not wall or already used
 				{
 					int availableSpace = checkSpace(x0, y0, pixels_distance); // check in which direction it will be shorter
 					if (availableSpace >= 4) // if it is at least 2x2
 					{
-						int rect_x; // x size of rectangle in 100x100 squares
-						int rect_y; // y size of rectangle in 100x100 squares
+						int rect_x = 0; // x size of rectangle in 100x100 squares
+						int rect_y = 0; // y size of rectangle in 100x100 squares
 						if (availableSpace % 2 == 0)
 						{
 							rect_x = availableSpace / 2;
 							rect_y = scanVerticalSize(rect_x, x0, y0, pixels_distance);
+							fillRectangleVerticaly(rect_x, rect_y, x0, y0);
 						}
 						else
 						{
 							rect_y = availableSpace / 2;
 							rect_x = scanHorizontalSize(rect_y, x0, y0, pixels_distance);
+							fillRectangleHorizontaly(rect_x, rect_y, x0, y0);
 						}
+						//System.out.println("[x|y]: " + rect_x + ", " + rect_y + " range: [" + x0/pixels_distance + "-" + (x0/pixels_distance + rect_x-1) + "]:[" + y0/pixels_distance + "-" + (y0/pixels_distance + rect_y-1) + "]");
+						
 					}
 				}
 				x0 += pixels_distance;
@@ -192,6 +197,8 @@ public class PositionSprinklers implements Runnable{
 
 	/*
 	 *	Tries to find shorter dimension for the rectangle
+	 *
+	 * 	Could add better prorities later
 	 */
 	private int checkSpace(int x0, int y0, int pixels_distance)
 	{
@@ -200,7 +207,7 @@ public class PositionSprinklers implements Runnable{
 		int y = y0;
 		int pixel = pixels_distance;
 		boolean in_progress = true;
-		while (in_progress)
+		while (in_progress && count < 20)
 		{
 			count++;
 			if (x0 + count * pixel >= lawn[0].length)
@@ -216,12 +223,13 @@ public class PositionSprinklers implements Runnable{
 			if (in_progress)
 			{
 				x = x0 + count * pixel;
-				for (y = y0; y <= y0 + count * pixel; y += pixel)
+				for (y = y0; y < y0 + count * pixel; y += pixel)
 				{
-					if (lawn[x][y] == 0)
+					if (lawn[y][x] <= 0)
 					{
 						in_progress = false;
 						count = count * 2;
+						break;
 					}
 				}
 			}
@@ -230,10 +238,11 @@ public class PositionSprinklers implements Runnable{
 				y = y0 + count * pixel;
 				for (x = x0; x <= x0 + count * pixel; x += pixel)
 				{
-					if (lawn[x][y] == 0)
+					if (lawn[y][x] <= 0)
 					{
 						in_progress = false;
 						count = count * 2 + 1;
+						break;
 					}
 				}
 			}
@@ -252,11 +261,12 @@ public class PositionSprinklers implements Runnable{
 		{
 			for (x = x0; x < x0 + H * pixel; x += pixel)
 			{
-				if (lawn[x][y] <= 0)
+				if (lawn[y][x] <= 0)
 				{
 					in_progress = false;
+					break;
 				}
-				lawn[x][y] *= -1;
+				lawn[y][x] *= -1;
 			}
 			if (in_progress)
 			{
@@ -282,11 +292,12 @@ public class PositionSprinklers implements Runnable{
 		{
 			for (y = y0; y < y0 + V * pixel; y += pixel)
 			{
-				if (lawn[x][y] <= 0)
+				if (lawn[y][x] <= 0)
 				{
 					in_progress = false;
+					break;
 				}
-				lawn[x][y] *= -1;
+				lawn[y][x] *= -1;
 			}
 			if (in_progress)
 			{
@@ -298,6 +309,16 @@ public class PositionSprinklers implements Runnable{
 				}
 			}
 		}
-		return V;
+		return H;
+	}
+
+	private void fillRectangleVerticaly(int H, int V, int x0, int y0)
+	{
+		
+	}
+
+	private void fillRectangleHorizontaly(int H, int V, int x0, int y0)
+	{
+		
 	}
 }
