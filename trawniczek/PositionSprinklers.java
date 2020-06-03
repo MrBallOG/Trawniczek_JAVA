@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 
 public class PositionSprinklers implements Runnable{
@@ -122,7 +123,7 @@ public class PositionSprinklers implements Runnable{
 	 *  282 is 400(diameter) divided by square root of 2, it is used to minimize gaps between circles
 	 *  subtract 400 to make sure that first and last circle in row or column can fit
 	 */
-	public void position() {  					//dodawaj do sprlist kolejne podelwaczki, trza zrobiæ
+	public void position() {  					//dodawaj do sprlist kolejne podelwaczki, trza zrobiï¿½
 		/*
 		int countx = (lawn[0].length-400) / 282;                        
 		int county = (lawn.length-400) / 282;							
@@ -149,5 +150,154 @@ public class PositionSprinklers implements Runnable{
 		Sprinkler s = new Sprinkler(270, 1000, 600, 4);
 		s.putSprinkler(lawn, set_rebounds);
 						
+	}
+
+	/*
+	 *	Iterates on lawn to find possible rectangles to put sprinklers in
+	 */
+	public void scanTheLawnForRectangles()
+	{
+		int x0 = 0; // x of the cursor
+		int y0 = 0; // y of the cursor
+		int pixels_distance = 100; // jump distance
+		while (y0 < lawn.length)
+		{
+			while (x0 < lawn[0].length)
+			{
+				if (lawn[y0][x0] != 0) // if not wall
+				{
+					int availableSpace = checkSpace(x0, y0, pixels_distance); // check in which direction it will be shorter
+					if (availableSpace >= 4) // if it is at least 2x2
+					{
+						int rect_x; // x size of rectangle in 100x100 squares
+						int rect_y; // y size of rectangle in 100x100 squares
+						if (availableSpace % 2 == 0)
+						{
+							rect_x = availableSpace / 2;
+							rect_y = scanVerticalSize(rect_x, x0, y0, pixels_distance);
+						}
+						else
+						{
+							rect_y = availableSpace / 2;
+							rect_x = scanHorizontalSize(rect_y, x0, y0, pixels_distance);
+						}
+					}
+				}
+				x0 += pixels_distance;
+			}
+			x0 = 0;
+			y0 += pixels_distance;
+		}
+	}
+
+	/*
+	 *	Tries to find shorter dimension for the rectangle
+	 */
+	private int checkSpace(int x0, int y0, int pixels_distance)
+	{
+		int count = 0;
+		int x = x0;
+		int y = y0;
+		int pixel = pixels_distance;
+		boolean in_progress = true;
+		while (in_progress)
+		{
+			count++;
+			if (x0 + count * pixel >= lawn[0].length)
+			{
+				in_progress = false;
+				count = count * 2;
+			}
+			else if (y0 + count * pixel >= lawn.length)
+			{
+				in_progress = false;
+				count = count * 2 + 1;
+			}
+			if (in_progress)
+			{
+				x = x0 + count * pixel;
+				for (y = y0; y <= y0 + count * pixel; y += pixel)
+				{
+					if (lawn[x][y] == 0)
+					{
+						in_progress = false;
+						count = count * 2;
+					}
+				}
+			}
+			if (in_progress)
+			{
+				y = y0 + count * pixel;
+				for (x = x0; x <= x0 + count * pixel; x += pixel)
+				{
+					if (lawn[x][y] == 0)
+					{
+						in_progress = false;
+						count = count * 2 + 1;
+					}
+				}
+			}
+		}
+		return count;
+	}
+
+	private int scanVerticalSize(int H, int x0, int y0, int pixels_distance)
+	{
+		int x = x0;
+		int y = y0;
+		int V = 0;
+		int pixel = pixels_distance;
+		boolean in_progress = true;
+		while (in_progress)
+		{
+			for (x = x0; x < x0 + H * pixel; x += pixel)
+			{
+				if (lawn[x][y] <= 0)
+				{
+					in_progress = false;
+				}
+				lawn[x][y] *= -1;
+			}
+			if (in_progress)
+			{
+				V++;
+				y += pixel;
+				if (y >= lawn.length)
+				{
+					in_progress = false;
+				}
+			}
+		}
+		return V;
+	}
+
+	private int scanHorizontalSize(int V, int x0, int y0, int pixels_distance)
+	{
+		int x = x0;
+		int y = y0;
+		int H = 0;
+		int pixel = pixels_distance;
+		boolean in_progress = true;
+		while (in_progress)
+		{
+			for (y = y0; y < y0 + V * pixel; y += pixel)
+			{
+				if (lawn[x][y] <= 0)
+				{
+					in_progress = false;
+				}
+				lawn[x][y] *= -1;
+			}
+			if (in_progress)
+			{
+				H++;
+				x += pixel;
+				if (x >= lawn[0].length)
+				{
+					in_progress = false;
+				}
+			}
+		}
+		return V;
 	}
 }
