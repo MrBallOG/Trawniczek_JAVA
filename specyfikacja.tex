@@ -1,0 +1,260 @@
+%%%%%%%%%%%%  Generated using docx2latex.com  %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%  v2.0.0-beta  %%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{extarrows}
+\usepackage{graphicx}
+\usepackage[backend=biber,
+style=numeric,
+sorting=none,
+isbn=false,
+doi=false,
+url=false,
+]{biblatex}\addbibresource{bibliography.bib}
+
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{ragged2e}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{changepage}
+\usepackage{setspace}
+\usepackage{hhline}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{shapes.symbols,shapes.geometric,shadows,arrows.meta}
+\tikzset{>={Latex[width=1.5mm,length=2mm]}}
+\usepackage{flowchart}\usepackage[paperheight=11.69in,paperwidth=8.27in,left=0.98in,right=0.98in,top=0.98in,bottom=0.98in,headheight=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\TabPositions{0.49in,0.98in,1.47in,1.96in,2.45in,2.94in,3.43in,3.92in,4.41in,4.9in,5.39in,5.88in,}
+
+\urlstyle{same}
+
+\renewcommand{\_}{\kern-1.5pt\textunderscore\kern-1.5pt}
+
+ %%%%%%%%%%%%  Set Depths for Sections  %%%%%%%%%%%%%%
+
+% 1) Section
+% 1.1) SubSection
+% 1.1.1) SubSubSection
+% 1.1.1.1) Paragraph
+% 1.1.1.1.1) Subparagraph
+
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+ %%%%%%%%%%%%  Set Depths for Nested Lists created by \begin{enumerate}  %%%%%%%%%%%%%%
+
+
+\setlistdepth{9}
+\renewlist{enumerate}{enumerate}{9}
+		\setlist[enumerate,1]{label=\arabic*)}
+		\setlist[enumerate,2]{label=\alph*)}
+		\setlist[enumerate,3]{label=(\roman*)}
+		\setlist[enumerate,4]{label=(\arabic*)}
+		\setlist[enumerate,5]{label=(\Alph*)}
+		\setlist[enumerate,6]{label=(\Roman*)}
+		\setlist[enumerate,7]{label=\arabic*}
+		\setlist[enumerate,8]{label=\alph*}
+		\setlist[enumerate,9]{label=\roman*}
+
+\renewlist{itemize}{itemize}{9}
+		\setlist[itemize]{label=$\cdot$}
+		\setlist[itemize,1]{label=\textbullet}
+		\setlist[itemize,2]{label=$\circ$}
+		\setlist[itemize,3]{label=$\ast$}
+		\setlist[itemize,4]{label=$\dagger$}
+		\setlist[itemize,5]{label=$\triangleright$}
+		\setlist[itemize,6]{label=$\bigstar$}
+		\setlist[itemize,7]{label=$\blacklozenge$}
+		\setlist[itemize,8]{label=$\prime$}
+
+\setlength{\topsep}{0pt}\setlength{\parskip}{8.04pt}
+\setlength{\parindent}{0pt}
+
+ %%%%%%%%%%%%  This sets linespacing (verticle gap between Lines) Default=1 %%%%%%%%%%%%%%
+
+
+\renewcommand{\arraystretch}{1.3}
+
+
+%%%%%%%%%%%%%%%%%%%% Document code starts here %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\begin{Center}
+Specyfikacja funkcjonalna programu trawniczek
+\end{Center}\par
+
+\begin{Center}
+Piłka Hubert, Smoliński Mateusz
+\end{Center}\par
+
+\begin{Center}
+04.06.2020
+\end{Center}\par
+
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Cel projektu}\par}\par
+
+Program ma na celu wyznaczenie rozmieszczenia podlewaczek na prostokątnej działce, tak aby był on jak najdokładniej podlany. Program posiada graficzny interfejs użytkownika (GUI) umożliwiający interakcję użytkownika z programem. W zadanych polach użytkownika wprowadza plik tekstowy, będący rozkładem działki w postaci opisanej poniżej oraz inne parametry, również opisane poniżej. Jako wynik program zwraca plik tekstowy zawierający rozkład podlewaczek i bitmapę wizualizującą stan nawodnienia przy takim rozkładzie.\par
+
+
+\vspace{\baselineskip}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Działanie programu}\par}\par
+
+Program analizuje dwuwymiarowy, prostokątny obszar nazywany inaczej działką. Po uruchomieniu programu pojawi\ się ekran, z którym użytkownik może wejść w interakcję. Pod odpowiednimi opisami znajdują się pola tekstowe, do których należy odpowiednio wpisać ścieżkę do pliku tekstowego  zawierającego rozkład działki,  liczbę cykli podlewania, szybkość animacji oraz pole wyboru, w którym można zaznaczyć czy program ma odbijać wodę od przeszkód czy odbitej wody nie pokazywać. Działkę można podzielić na rozłączne, leżące jeden za drugim poziomo i pionowo kwadraty 100x100 pikseli. Znaki w pliku wejściowym oznaczają czy wszystkie piksele w danym kwadracie są trawnikiem – częścią działki, którą należy podlać czy przeszkodą – częścią której podlać się nie da. \par
+
+Minimalne rozmiary działki to 100x100 pikseli, a maksymalne 8000x4000 pikseli (80 kolumn, 40 rzędów znaków). Program następnie przystępuje do rozmieszczania podlewaczek. Są to wycinki koła o ustalonych promieniach i kształtach, które zwiększają wartość ‘nawodnienia’ każdego piksela będącego trawnikiem w fragmencie działki, który podlewaczka pokrywa.\par
+
+Program będzie dążył do rozmieszczenia podlewaczek w taki sposób, żeby obszar trawnika był jak najlepiej pokryty w celu minimalizacji niepodlanych terenów. Podlewaczki umieszczane są w pikselach działki. Dostępne są cztery rodzaje podlewczek:\par
+
+\begin{itemize}
+	\item „Pełna$"$  podlewaczka - koło 360◦, promień 200 pikseli, 1 podlanie na cykl.\par
+
+	\item Podlewaczka 270◦ - wycinek kołowy o kącie 270◦, promień 300 pikseli, 2 podlania na cykl.\par
+
+	\item Podlewaczka 180◦ - wycinek kołowy o kącie 180◦, promień 400 pikseli, 3 podlania na cykl.\par
+
+	\item Podlewaczka 90◦ - wycinek kołowy o kącie 90◦, promień 400 pikseli, 4 podlania na cykl.
+\end{itemize}\par
+
+Podlewaczki mogą być skierowane w jedną z czterech stron. Umieszczenie podlewaczki przez program zwiększa wartość podlania wszystkich pikseli w obejmowanym obszarze o liczbę podlań na cykl. W zależności od wybranej Trafiając na przeszkodę obszar podlewania odbija się lustrzanie w odpowiednim kierunku – poziomym lub pionowym.\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Dane wejściowe}\par}\par
+
+Do działania program wymaga informacji o kształcie trawnika, ilości wykonywanych cykli, okresu pojedynczego cyklu i wybrania opcji czy woda ma ulegać odbiciu w kontakcie z przeszkodą. Są one przekazane w następującej formie:\par
+
+\begin{itemize}
+	\item Ścieżka do pliku tekstowego z podwójnym znakiem „$\textbackslash$ $"$  (np. C:$\textbackslash$ $\textbackslash$ Pulpit$\textbackslash$ $\textbackslash$ folder$\textbackslash$ $\textbackslash$ trawnik.txt). Plik zawiera znaki ‘$\ast$  ’ oraz ‘-’ umieszczone w co najwyżej 40 równej długości wierszach. Maksymalna długość wierszy to 80 znaków ‘$\ast$ ’ i ‘-‘ plus znak końca linii. Plik powinien zawierać co najmniej jeden znak ‘$\ast$ ’ lub ‘-‘. Każdy ze znaków interpretowany jest jako fragment działki 100x100 pikseli, który dla ‘-’ oznacza przeszkodę, a dla ‘$\ast$ ‘ niepodlany trawnik.\par
+
+	\item Liczba naturalna oznaczająca liczbę cykli wykonywanych przez podlewaczki. \par
+
+	\item  Liczba naturalna oznaczająca współczynnik, przez który zostanie pomnożone 0.1 sekundy, przez co otrzymany zostanie okres trwania pojedynczego cyklu podlewaczki. \par
+
+	\item Zaznaczenie opcji tak –\ woda będzie odbita lub nie –  woda, która uległaby odbiciu nie jest brana pod uwagę przy podlewaniu 
+\end{itemize}\par
+
+
+\vspace{\baselineskip}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Wygląd programu}\par}\par
+
+Po uruchomieniu programu powinno wyświetlić się na ekranie okno z polami na wpisanie ścieżki dostępu do pliku, liczby cykli i okresu cykli oraz możliwość wyboru podlewania. Poniżej znajduje się przycisk ‘dalej’ który należy wcisnąć jak wszystkie dane zostaną podane. Nastąpi wtedy przejście do animacji pokazującej podlewanie działki rozmieszczonymi podlewaczkami. Okno można następnie zamknąć.\par
+
+
+\vspace{\baselineskip}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Klasy}\par}\par
+
+\begin{itemize}
+	\item graphics/Animation – odpowiedzialna za wykonywanie animacji podlewaczek\par
+
+	\item graphics/Gui – odpowiedzialna za interfejs programu\par
+
+	\item io/Input – odczytuje dane wejściowe i sprawdza czy nie ma w nich błędu\par
+
+	\item io/Output – tworzy pliki wyjścia: plik tekstowy z podlewaczkami i bitmapę\par
+
+	\item main/Application – główna klasa
+\end{itemize}\par
+
+\begin{itemize}
+	\item positioning/PositionSprinklers– odpowiedzialna za analizowanie obszaru, znajdowanie w nim rozdzielnych prostokątów i wypełnienie ich w odpowiedni sposób (zależny od wymiarów prostokąta) w celu jak najdokładniejszego wypełnienia trawnika podlewaczkami. Dodaje podlewaczki do listy\par
+
+	\item positioning/UpdateSprinklers – rozkłada podlewaczki na trawniku\par
+
+	\item sprinkler/SprinkleLawn – wykonuje podlanie na trawniku odpowiednich ćwiartek dla postawionych podlewaczek. Wykonuje odbicia jeśli należy je wykonać.\par
+
+	\item sprinkler/Sprinkler – przechowuje typy podlewaczek, rozróżnia możliwe ich ustawienia i przydziela im ćwiartki. Przechowuje też format tekstu do wpisania w pliku wyjściowym.
+\end{itemize}\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Wynik działania programu}\par}\par
+
+\setlength{\parskip}{5.04pt}
+Jeżeli działanie programu zostało zakończone poprawnie powinien on zwrócić dwa pliki:\par
+
+$\bullet$  Plik tekstowy zawierający sumę postawionych podlewaczek oraz w oddzielnych liniach wypisany rodzaj, współrzędne i zajmowane ćwiartki układu współrzędnych (do określenia kierunku stawiania) kolejnych podlewaczek.\par
+
+$\bullet$  Plik bitmapy w którym w graficzny sposób został przedstawiony stan końcowy trawnika. Kolor czarny oznacza przeszkodę, biały niepodlany trawnik, odcienie żółci obszary niedolane, odcienie zieleni obszary dobrze podlane, karmazynowy czerwony obszary przelane.\par
+
+
+\vspace{\baselineskip}
+\setlength{\parskip}{8.04pt}
+{\fontsize{16pt}{19.2pt}\selectfont \uline{Błędy }\par}\par
+
+\setlength{\parskip}{3.0pt}
+Wyświetlane w formie okienek z komunikatem, mogą pojawić się po wciśnięciu przycisku dalej. Okienko może zostać zamknięte, a plik lub pola tekstowe poprawione przez użytkownika w trakcie działania programu, opcjonalnie można spróbować nacisnąć dalej ponownie bez żadnych zmian jeśli wystąpił \uline{nieoczekiwany błąd}.\par
+
+\setlength{\parskip}{5.04pt}
+\begin{itemize}
+	\item „Puste pola$"$  – należy wypełnić wszystkie pola tekstowe \par
+
+	\item „Liczba cykli musi byc > 0$"$  – należy wpisać liczbę cykli większą niż zero \par
+
+	\item „Okres musi byc > 0$"$ - należy wpisać okres większy niż zero \par
+
+	\item „To nie liczba naturalna$"$  – okres lub liczba cykli nie jest liczbą naturalną, należy wypełnić liczbami naturalnymi\par
+
+	\item „Plik nie istnieje$"$  - plik wejściowy nie istnieje, należy go stworzyć lub poprawić ścieżkę do pliku\par
+
+	\item „Pierwsza linia pliku jest pusta$"$  – plik jest albo pusty albo jego pierwsza linia, należy usunąć puste linie lub wypełnić pusty plik\par
+
+	\item „Blad w czytaniu pliku$"$  – \uline{nieoczekiwany błąd} w trakcie czytania pliku lub ścieżka została podana do folderu, a nie pliku\par
+
+	\item „Trawnik przekracza maksymalne rozmiary (40x80):  ‘wymiary podanego pliku’ $"$  – należy podać plik zgodny z opisem w dokumentacji\par
+
+	\item „Jeden z wierszy w pliku jest zbyt dlugi$"$ \  – wiersze pliku muszą być takiego samego rozmiaru, należy podać plik zgodny z opisem w dokumentacji\par
+
+	\item „Jeden z wierszy w pliku jest zbyt krotki$"$  – wiersze pliku muszą być takiego samego rozmiaru, należy podać plik zgodny z opisem w dokumentacji\par
+
+	\item „Blad skladniowy elementu (‘wiersz’, ‘kolumna’)$"$  – znak w danym wierszu i kolumnie jest nieoprawny, należy podać plik zgodny z opisem w dokumentacji\par
+
+\setlength{\parskip}{3.0pt}
+Również w formie okienek, mogą pojawić się po tym jak wciśnięcie przycisku dalej nie znalazło żadnych błędów. Błędy te nie mogą być poprawione przez użytkownika. Program kończy działanie.\par
+
+\setlength{\parskip}{5.04pt}
+	\item „Niespodziewane przerwanie podlewania$"$  – doszło do przerwania wątku aktualizującego trawnik\par
+
+	\item „Niespodziewane przerwanie animacji$"$  - doszło do przerwania wątku aktualizującego klatkę animacji\par
+
+	\item „Blad w otwarciu/tworzeniu pliku$"$  – plik wyjściowy nie mógł zostać stworzony lub nadpisany jeśli został wcześniej stworzony \par
+
+	\item „Blad w pisaniu do pliku$"$  - plik wyjściowy nie mógł zostać utworzony\par
+
+\setlength{\parskip}{8.04pt}
+	\item „Blad w tworzeniu bitmapy$"$ \  – bitmapa nie mogła zostać utworzona
+\end{itemize}\par
+
+
+\printbibliography
+\end{document}
