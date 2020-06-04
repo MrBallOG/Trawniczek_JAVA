@@ -12,7 +12,7 @@ public class PositionSprinklers {
 	/*
 	 *	Iterates on lawn to find possible rectangles to put sprinklers in
 	 */
-	public void scanTheLawnForRectangles()
+	protected void scanTheLawnForRectangles()
 	{
 		int x0 = 0; // x of the cursor
 		int y0 = 0; // y of the cursor
