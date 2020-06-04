@@ -1,128 +1,500 @@
-Liczba wszytskich podlewaczek: 72
+Liczba wszytskich podlewaczek: 258
 
-typ: 360,  koordynaty: (200, 200)
+typ: 360,  koordynaty: (200, 142)
 
-typ: 360,  koordynaty: (200, 500)
+typ: 360,  koordynaty: (200, 427)
 
-typ: 360,  koordynaty: (200, 800)
+typ: 360,  koordynaty: (200, 712)
 
-typ: 360,  koordynaty: (200, 1100)
+typ: 360,  koordynaty: (200, 997)
 
-typ: 360,  koordynaty: (200, 1400)
+typ: 360,  koordynaty: (200, 1282)
 
-typ: 360,  koordynaty: (200, 1700)
+typ: 360,  koordynaty: (200, 1567)
 
-typ: 360,  koordynaty: (200, 2000)
+typ: 360,  koordynaty: (200, 1852)
 
-typ: 360,  koordynaty: (200, 2300)
+typ: 360,  koordynaty: (200, 2137)
 
-typ: 360,  koordynaty: (200, 2600)
+typ: 360,  koordynaty: (200, 2422)
 
-typ: 360,  koordynaty: (200, 2900)
+typ: 360,  koordynaty: (200, 2707)
 
-typ: 360,  koordynaty: (200, 3200)
+typ: 360,  koordynaty: (200, 2992)
 
-typ: 360,  koordynaty: (200, 3500)
+typ: 360,  koordynaty: (200, 3277)
 
-typ: 360,  koordynaty: (200, 3800)
+typ: 360,  koordynaty: (200, 3562)
 
-typ: 360,  koordynaty: (600, 200)
+typ: 360,  koordynaty: (200, 3847)
 
-typ: 360,  koordynaty: (600, 491)
+typ: 360,  koordynaty: (447, 300)
 
-typ: 360,  koordynaty: (600, 782)
+typ: 360,  koordynaty: (741, 300)
 
-typ: 360,  koordynaty: (600, 1073)
+typ: 360,  koordynaty: (1035, 300)
 
-typ: 360,  koordynaty: (600, 1364)
+typ: 360,  koordynaty: (1329, 300)
 
-typ: 360,  koordynaty: (600, 1655)
+typ: 360,  koordynaty: (1623, 300)
 
-typ: 360,  koordynaty: (600, 1946)
+typ: 360,  koordynaty: (1917, 300)
 
-typ: 360,  koordynaty: (600, 2237)
+typ: 360,  koordynaty: (2211, 300)
 
-typ: 360,  koordynaty: (600, 2528)
+typ: 360,  koordynaty: (2505, 300)
 
-typ: 360,  koordynaty: (600, 2819)
+typ: 360,  koordynaty: (2799, 300)
 
-typ: 360,  koordynaty: (600, 3110)
+typ: 360,  koordynaty: (3093, 300)
 
-typ: 360,  koordynaty: (600, 3401)
+typ: 360,  koordynaty: (3387, 300)
 
-typ: 360,  koordynaty: (600, 3692)
+typ: 360,  koordynaty: (3681, 300)
 
-typ: 360,  koordynaty: (1000, 200)
+typ: 360,  koordynaty: (3975, 300)
 
-typ: 360,  koordynaty: (1000, 509)
+typ: 360,  koordynaty: (4269, 300)
 
-typ: 360,  koordynaty: (1000, 818)
+typ: 360,  koordynaty: (4563, 300)
 
-typ: 360,  koordynaty: (1000, 1127)
+typ: 360,  koordynaty: (4857, 300)
 
-typ: 360,  koordynaty: (1000, 1436)
+typ: 360,  koordynaty: (5151, 300)
 
-typ: 360,  koordynaty: (1000, 1745)
+typ: 360,  koordynaty: (5445, 300)
 
-typ: 360,  koordynaty: (1000, 2054)
+typ: 360,  koordynaty: (447, 600)
 
-typ: 360,  koordynaty: (1000, 2363)
+typ: 360,  koordynaty: (741, 600)
 
-typ: 360,  koordynaty: (1000, 2672)
+typ: 360,  koordynaty: (1035, 600)
 
-typ: 360,  koordynaty: (1000, 2981)
+typ: 360,  koordynaty: (1329, 600)
 
-typ: 360,  koordynaty: (1000, 3290)
+typ: 360,  koordynaty: (1623, 600)
 
-typ: 360,  koordynaty: (1000, 3599)
+typ: 360,  koordynaty: (1917, 600)
 
-typ: 360,  koordynaty: (1400, 200)
+typ: 360,  koordynaty: (2211, 600)
 
-typ: 360,  koordynaty: (1400, 500)
+typ: 360,  koordynaty: (2505, 600)
 
-typ: 360,  koordynaty: (1400, 800)
+typ: 360,  koordynaty: (2799, 600)
 
-typ: 360,  koordynaty: (1400, 1100)
+typ: 360,  koordynaty: (3093, 600)
 
-typ: 360,  koordynaty: (1400, 1400)
+typ: 360,  koordynaty: (3387, 600)
 
-typ: 360,  koordynaty: (1400, 1700)
+typ: 360,  koordynaty: (3681, 600)
 
-typ: 360,  koordynaty: (1400, 2000)
+typ: 360,  koordynaty: (3975, 600)
 
-typ: 360,  koordynaty: (1400, 2300)
+typ: 360,  koordynaty: (4269, 600)
 
-typ: 360,  koordynaty: (1400, 2600)
+typ: 360,  koordynaty: (4563, 600)
 
-typ: 360,  koordynaty: (1400, 2900)
+typ: 360,  koordynaty: (4857, 600)
 
-typ: 360,  koordynaty: (1400, 3200)
+typ: 360,  koordynaty: (5151, 600)
 
-typ: 360,  koordynaty: (1400, 3500)
+typ: 360,  koordynaty: (5445, 600)
 
-typ: 360,  koordynaty: (1800, 200)
+typ: 360,  koordynaty: (447, 900)
 
-typ: 360,  koordynaty: (1800, 490)
+typ: 360,  koordynaty: (741, 900)
 
-typ: 360,  koordynaty: (1800, 780)
+typ: 360,  koordynaty: (1035, 900)
 
-typ: 360,  koordynaty: (1800, 1070)
+typ: 360,  koordynaty: (1329, 900)
 
-typ: 360,  koordynaty: (1800, 1360)
+typ: 360,  koordynaty: (1623, 900)
 
-typ: 360,  koordynaty: (1800, 1650)
+typ: 360,  koordynaty: (1917, 900)
 
-typ: 360,  koordynaty: (1800, 1940)
+typ: 360,  koordynaty: (2211, 900)
 
-typ: 360,  koordynaty: (1800, 2230)
+typ: 360,  koordynaty: (2505, 900)
 
-typ: 360,  koordynaty: (1800, 2520)
+typ: 360,  koordynaty: (2799, 900)
 
-typ: 360,  koordynaty: (1800, 2810)
+typ: 360,  koordynaty: (3093, 900)
 
-typ: 360,  koordynaty: (1800, 3100)
+typ: 360,  koordynaty: (3387, 900)
 
-typ: 360,  koordynaty: (1800, 3390)
+typ: 360,  koordynaty: (3681, 900)
+
+typ: 360,  koordynaty: (3975, 900)
+
+typ: 360,  koordynaty: (4269, 900)
+
+typ: 360,  koordynaty: (4563, 900)
+
+typ: 360,  koordynaty: (4857, 900)
+
+typ: 360,  koordynaty: (5151, 900)
+
+typ: 360,  koordynaty: (5445, 900)
+
+typ: 360,  koordynaty: (447, 1200)
+
+typ: 360,  koordynaty: (741, 1200)
+
+typ: 360,  koordynaty: (1035, 1200)
+
+typ: 360,  koordynaty: (1329, 1200)
+
+typ: 360,  koordynaty: (1623, 1200)
+
+typ: 360,  koordynaty: (1917, 1200)
+
+typ: 360,  koordynaty: (2211, 1200)
+
+typ: 360,  koordynaty: (2505, 1200)
+
+typ: 360,  koordynaty: (2799, 1200)
+
+typ: 360,  koordynaty: (3093, 1200)
+
+typ: 360,  koordynaty: (3387, 1200)
+
+typ: 360,  koordynaty: (3681, 1200)
+
+typ: 360,  koordynaty: (3975, 1200)
+
+typ: 360,  koordynaty: (4269, 1200)
+
+typ: 360,  koordynaty: (4563, 1200)
+
+typ: 360,  koordynaty: (4857, 1200)
+
+typ: 360,  koordynaty: (5151, 1200)
+
+typ: 360,  koordynaty: (5445, 1200)
+
+typ: 360,  koordynaty: (447, 1500)
+
+typ: 360,  koordynaty: (741, 1500)
+
+typ: 360,  koordynaty: (1035, 1500)
+
+typ: 360,  koordynaty: (1329, 1500)
+
+typ: 360,  koordynaty: (1623, 1500)
+
+typ: 360,  koordynaty: (1917, 1500)
+
+typ: 360,  koordynaty: (2211, 1500)
+
+typ: 360,  koordynaty: (2505, 1500)
+
+typ: 360,  koordynaty: (2799, 1500)
+
+typ: 360,  koordynaty: (3093, 1500)
+
+typ: 360,  koordynaty: (3387, 1500)
+
+typ: 360,  koordynaty: (3681, 1500)
+
+typ: 360,  koordynaty: (3975, 1500)
+
+typ: 360,  koordynaty: (4269, 1500)
+
+typ: 360,  koordynaty: (4563, 1500)
+
+typ: 360,  koordynaty: (4857, 1500)
+
+typ: 360,  koordynaty: (5151, 1500)
+
+typ: 360,  koordynaty: (5445, 1500)
+
+typ: 360,  koordynaty: (447, 1800)
+
+typ: 360,  koordynaty: (741, 1800)
+
+typ: 360,  koordynaty: (1035, 1800)
+
+typ: 360,  koordynaty: (1329, 1800)
+
+typ: 360,  koordynaty: (1623, 1800)
+
+typ: 360,  koordynaty: (1917, 1800)
+
+typ: 360,  koordynaty: (2211, 1800)
+
+typ: 360,  koordynaty: (2505, 1800)
+
+typ: 360,  koordynaty: (2799, 1800)
+
+typ: 360,  koordynaty: (3093, 1800)
+
+typ: 360,  koordynaty: (3387, 1800)
+
+typ: 360,  koordynaty: (3681, 1800)
+
+typ: 360,  koordynaty: (3975, 1800)
+
+typ: 360,  koordynaty: (4269, 1800)
+
+typ: 360,  koordynaty: (4563, 1800)
+
+typ: 360,  koordynaty: (4857, 1800)
+
+typ: 360,  koordynaty: (5151, 1800)
+
+typ: 360,  koordynaty: (5445, 1800)
+
+typ: 360,  koordynaty: (447, 2100)
+
+typ: 360,  koordynaty: (741, 2100)
+
+typ: 360,  koordynaty: (1035, 2100)
+
+typ: 360,  koordynaty: (1329, 2100)
+
+typ: 360,  koordynaty: (1623, 2100)
+
+typ: 360,  koordynaty: (1917, 2100)
+
+typ: 360,  koordynaty: (2211, 2100)
+
+typ: 360,  koordynaty: (2505, 2100)
+
+typ: 360,  koordynaty: (2799, 2100)
+
+typ: 360,  koordynaty: (3093, 2100)
+
+typ: 360,  koordynaty: (3387, 2100)
+
+typ: 360,  koordynaty: (3681, 2100)
+
+typ: 360,  koordynaty: (3975, 2100)
+
+typ: 360,  koordynaty: (4269, 2100)
+
+typ: 360,  koordynaty: (4563, 2100)
+
+typ: 360,  koordynaty: (4857, 2100)
+
+typ: 360,  koordynaty: (5151, 2100)
+
+typ: 360,  koordynaty: (5445, 2100)
+
+typ: 360,  koordynaty: (447, 2400)
+
+typ: 360,  koordynaty: (741, 2400)
+
+typ: 360,  koordynaty: (1035, 2400)
+
+typ: 360,  koordynaty: (1329, 2400)
+
+typ: 360,  koordynaty: (1623, 2400)
+
+typ: 360,  koordynaty: (1917, 2400)
+
+typ: 360,  koordynaty: (2211, 2400)
+
+typ: 360,  koordynaty: (2505, 2400)
+
+typ: 360,  koordynaty: (2799, 2400)
+
+typ: 360,  koordynaty: (3093, 2400)
+
+typ: 360,  koordynaty: (3387, 2400)
+
+typ: 360,  koordynaty: (3681, 2400)
+
+typ: 360,  koordynaty: (3975, 2400)
+
+typ: 360,  koordynaty: (4269, 2400)
+
+typ: 360,  koordynaty: (4563, 2400)
+
+typ: 360,  koordynaty: (4857, 2400)
+
+typ: 360,  koordynaty: (5151, 2400)
+
+typ: 360,  koordynaty: (5445, 2400)
+
+typ: 360,  koordynaty: (447, 2700)
+
+typ: 360,  koordynaty: (741, 2700)
+
+typ: 360,  koordynaty: (1035, 2700)
+
+typ: 360,  koordynaty: (1329, 2700)
+
+typ: 360,  koordynaty: (1623, 2700)
+
+typ: 360,  koordynaty: (1917, 2700)
+
+typ: 360,  koordynaty: (2211, 2700)
+
+typ: 360,  koordynaty: (2505, 2700)
+
+typ: 360,  koordynaty: (2799, 2700)
+
+typ: 360,  koordynaty: (3093, 2700)
+
+typ: 360,  koordynaty: (3387, 2700)
+
+typ: 360,  koordynaty: (3681, 2700)
+
+typ: 360,  koordynaty: (3975, 2700)
+
+typ: 360,  koordynaty: (4269, 2700)
+
+typ: 360,  koordynaty: (4563, 2700)
+
+typ: 360,  koordynaty: (4857, 2700)
+
+typ: 360,  koordynaty: (5151, 2700)
+
+typ: 360,  koordynaty: (5445, 2700)
+
+typ: 360,  koordynaty: (447, 3000)
+
+typ: 360,  koordynaty: (741, 3000)
+
+typ: 360,  koordynaty: (1035, 3000)
+
+typ: 360,  koordynaty: (1329, 3000)
+
+typ: 360,  koordynaty: (1623, 3000)
+
+typ: 360,  koordynaty: (1917, 3000)
+
+typ: 360,  koordynaty: (2211, 3000)
+
+typ: 360,  koordynaty: (2505, 3000)
+
+typ: 360,  koordynaty: (2799, 3000)
+
+typ: 360,  koordynaty: (3093, 3000)
+
+typ: 360,  koordynaty: (3387, 3000)
+
+typ: 360,  koordynaty: (3681, 3000)
+
+typ: 360,  koordynaty: (3975, 3000)
+
+typ: 360,  koordynaty: (4269, 3000)
+
+typ: 360,  koordynaty: (4563, 3000)
+
+typ: 360,  koordynaty: (4857, 3000)
+
+typ: 360,  koordynaty: (5151, 3000)
+
+typ: 360,  koordynaty: (5445, 3000)
+
+typ: 360,  koordynaty: (447, 3300)
+
+typ: 360,  koordynaty: (741, 3300)
+
+typ: 360,  koordynaty: (1035, 3300)
+
+typ: 360,  koordynaty: (1329, 3300)
+
+typ: 360,  koordynaty: (1623, 3300)
+
+typ: 360,  koordynaty: (1917, 3300)
+
+typ: 360,  koordynaty: (2211, 3300)
+
+typ: 360,  koordynaty: (2505, 3300)
+
+typ: 360,  koordynaty: (2799, 3300)
+
+typ: 360,  koordynaty: (3093, 3300)
+
+typ: 360,  koordynaty: (3387, 3300)
+
+typ: 360,  koordynaty: (3681, 3300)
+
+typ: 360,  koordynaty: (3975, 3300)
+
+typ: 360,  koordynaty: (4269, 3300)
+
+typ: 360,  koordynaty: (4563, 3300)
+
+typ: 360,  koordynaty: (4857, 3300)
+
+typ: 360,  koordynaty: (5151, 3300)
+
+typ: 360,  koordynaty: (5445, 3300)
+
+typ: 360,  koordynaty: (447, 3600)
+
+typ: 360,  koordynaty: (741, 3600)
+
+typ: 360,  koordynaty: (1035, 3600)
+
+typ: 360,  koordynaty: (1329, 3600)
+
+typ: 360,  koordynaty: (1623, 3600)
+
+typ: 360,  koordynaty: (1917, 3600)
+
+typ: 360,  koordynaty: (2211, 3600)
+
+typ: 360,  koordynaty: (2505, 3600)
+
+typ: 360,  koordynaty: (2799, 3600)
+
+typ: 360,  koordynaty: (3093, 3600)
+
+typ: 360,  koordynaty: (3387, 3600)
+
+typ: 360,  koordynaty: (3681, 3600)
+
+typ: 360,  koordynaty: (3975, 3600)
+
+typ: 360,  koordynaty: (4269, 3600)
+
+typ: 360,  koordynaty: (4563, 3600)
+
+typ: 360,  koordynaty: (4857, 3600)
+
+typ: 360,  koordynaty: (5151, 3600)
+
+typ: 360,  koordynaty: (5445, 3600)
+
+typ: 360,  koordynaty: (447, 3900)
+
+typ: 360,  koordynaty: (741, 3900)
+
+typ: 360,  koordynaty: (1035, 3900)
+
+typ: 360,  koordynaty: (1329, 3900)
+
+typ: 360,  koordynaty: (1623, 3900)
+
+typ: 360,  koordynaty: (1917, 3900)
+
+typ: 360,  koordynaty: (2211, 3900)
+
+typ: 360,  koordynaty: (2505, 3900)
+
+typ: 360,  koordynaty: (2799, 3900)
+
+typ: 360,  koordynaty: (3093, 3900)
+
+typ: 360,  koordynaty: (3387, 3900)
+
+typ: 360,  koordynaty: (3681, 3900)
+
+typ: 360,  koordynaty: (3975, 3900)
+
+typ: 360,  koordynaty: (4269, 3900)
+
+typ: 360,  koordynaty: (4563, 3900)
+
+typ: 360,  koordynaty: (4857, 3900)
+
+typ: 360,  koordynaty: (5151, 3900)
+
+typ: 360,  koordynaty: (5445, 3900)
 
 typ: 90,   koordynaty: (52, 10), cwiartka zajeta: 1
 

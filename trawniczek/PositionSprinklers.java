@@ -287,13 +287,13 @@ public class PositionSprinklers implements Runnable{
 			int x = (x0 + x0 + H * 100)/2;
 			int sy = y0 ;
 			int ey = y0 + V * 100;
-			int ry = (ey - sy - 1)/300 + 1;
+			int ry = (ey - sy - 1) / 300 + 1;
 			int jump;
 			int y;
 			if (ry > 1)
 			{
-				y = sy + 100;
-				jump = (ey - sy - 200) / (ry - 1);
+				jump = (ey - sy) / (ry);
+				y = sy + jump/2;
 			}
 			else
 			{
@@ -376,13 +376,13 @@ public class PositionSprinklers implements Runnable{
 			int y = (y0 + y0 + V * 100)/2;
 			int sx = x0 ;
 			int ex = x0 + H * 100;
-			int rx = (ex - sx - 1)/300 + 1;
+			int rx = (ex - sx - 1) / 300 + 1;
 			int jump;
 			int x;
 			if (rx > 1)
 			{
-				x = sx + 100;
-				jump = (ex - sx - 200) / (rx - 1);
+				jump = (ex - sx) / (rx);
+				x = sx + jump/2;
 			}
 			else
 			{
@@ -395,7 +395,7 @@ public class PositionSprinklers implements Runnable{
 				x += jump;
 			}
 		}
-		if (H == 4)
+		if (V == 4)
 		{
 			int y1 = y0;
 			int y2 = y0 + 399;
@@ -428,7 +428,7 @@ public class PositionSprinklers implements Runnable{
 				x += jump;
 			}
 		}
-		if (H == 5)
+		if (V == 5)
 		{
 			int mod5 = H % 5;
 			if (mod5 <= 2)
@@ -447,14 +447,14 @@ public class PositionSprinklers implements Runnable{
 				sprlist.add(new Sprinkler(180, (x0 + x0 + 499 + 100 * mod5) / 2, y0 + 499, 12));
 				if (H-5-mod5 >= 5)
 				{
-					fillRectangleVerticaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
+					fillRectangleHorizontaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
 				}
 			}
 		}
-		if (H >= 6)
+		if (V >= 6)
 		{
-			fillRectangleVerticaly(H, 3, x0, y0);
-			fillRectangleVerticaly(H, V - 3, x0 , y0 + 300);
+			fillRectangleHorizontaly(H, 3, x0, y0);
+			fillRectangleHorizontaly(H, V - 3, x0 , y0 + 300);
 		}
 	}
 }
