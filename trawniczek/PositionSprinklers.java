@@ -77,22 +77,6 @@ public class PositionSprinklers implements Runnable{
 	}
 	
 	public List<Sprinkler> getSprlist() {
-		for(int j = 0; j<10; j++) {							//tymczasowe zeby cos zwracac
-			switch(j%4) {
-			case 0:
-				sprlist.add(new Sprinkler(90, 52-j, j+10, 1));
-				break;
-			case 1:
-				sprlist.add(new Sprinkler(180, j, j+10, 34));
-				break;
-			case 2:
-				sprlist.add(new Sprinkler(270, j+55, j, 3));
-				break;
-			case 3:
-				sprlist.add(new Sprinkler(360, 18-j, j+35));
-				break;
-			}
-		}
 		return sprlist;
 	}
 	
@@ -437,13 +421,13 @@ public class PositionSprinklers implements Runnable{
 				sprlist.add(new Sprinkler(90, x0 + 499 + 100 * mod5, y0 + 499 , 2));
 				if (H-5-mod5 >= 5)
 				{
-					fillRectangleVerticaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
+					fillRectangleHorizontaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
 				}
 			}
 			else
 			{
 				sprlist.add(new Sprinkler(90, x0, y0, 4));
-				sprlist.add(new Sprinkler(90, x0 + 499 + 100 * mod5, y0 , 1));
+				sprlist.add(new Sprinkler(90, x0 + 499 + 100 * mod5, y0 , 3));
 				sprlist.add(new Sprinkler(180, (x0 + x0 + 499 + 100 * mod5) / 2, y0 + 499, 12));
 				if (H-5-mod5 >= 5)
 				{
