@@ -309,7 +309,7 @@ public class PositionSprinklers implements Runnable{
 		}
 		if (H == 4) //some 180
 		{
-			int x1 = x0;o //x dimension for sprinklers on the left
+			int x1 = x0; //x dimension for sprinklers on the left
 			int x2 = x0 + 399; //x dimension for sprinklers on the right, used alternately with x1
 			int sy = y0 ; //first of y borders
 			int ey = y0 + V * 100; //second of y borders
