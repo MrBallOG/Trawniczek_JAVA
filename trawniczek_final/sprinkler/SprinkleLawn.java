@@ -1,6 +1,6 @@
 package sprinkler;
 
-public class SprinkleLawn {
+public abstract class SprinkleLawn {
 
 	/*
 	 *  Updates Lawn's first quadrant from south to north
