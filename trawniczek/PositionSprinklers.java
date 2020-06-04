@@ -296,7 +296,7 @@ public class PositionSprinklers implements Runnable{
 			int x2 = x0 + 399;
 			int sy = y0 ;
 			int ey = y0 + V * 100;
-			int ry = (V - 2) / 5 + 1;
+			int ry = (V - 1 ) / 5 + 1;
 			int jump;
 			int y;
 			if (ry > 1)
@@ -385,7 +385,7 @@ public class PositionSprinklers implements Runnable{
 			int y2 = y0 + 399;
 			int sx = x0 ;
 			int ex = x0 + H * 100;
-			int rx = (H - 2) / 5 + 1;
+			int rx = (H - 1) / 5 + 1;
 			int jump;
 			int x;
 			if (rx > 1)
