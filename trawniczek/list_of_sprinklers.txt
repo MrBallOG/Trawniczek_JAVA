@@ -1,284 +1,232 @@
-Liczba wszytskich podlewaczek: 141
+Liczba wszytskich podlewaczek: 115
 
-typ: 360,  koordynaty: (147, 150)
+typ: 90,   koordynaty: (3400, 0), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (441, 150)
+typ: 90,   koordynaty: (3400, 899), cwiartka zajeta: 1
 
-typ: 360,  koordynaty: (735, 150)
+typ: 180,  koordynaty: (3899, 449), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (1029, 150)
+typ: 180,  koordynaty: (5300, 250), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (1323, 150)
+typ: 180,  koordynaty: (5699, 750), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (1617, 150)
+typ: 180,  koordynaty: (5300, 1250), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (1911, 150)
+typ: 180,  koordynaty: (5699, 1750), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (2205, 150)
+typ: 180,  koordynaty: (5300, 2250), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (2499, 150)
+typ: 180,  koordynaty: (5699, 2750), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (2793, 150)
+typ: 180,  koordynaty: (5300, 3250), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (3087, 150)
+typ: 90,   koordynaty: (2900, 200), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (3381, 150)
+typ: 90,   koordynaty: (3399, 899), cwiartka zajeta: 2
 
-typ: 360,  koordynaty: (3675, 150)
+typ: 360,  koordynaty: (5840, 350)
 
-typ: 360,  koordynaty: (3969, 150)
+typ: 360,  koordynaty: (6120, 350)
 
-typ: 360,  koordynaty: (4263, 150)
+typ: 360,  koordynaty: (6400, 350)
 
-typ: 360,  koordynaty: (4557, 150)
+typ: 360,  koordynaty: (6680, 350)
 
-typ: 360,  koordynaty: (4851, 150)
+typ: 360,  koordynaty: (6960, 350)
 
-typ: 360,  koordynaty: (5145, 150)
+typ: 180,  koordynaty: (5900, 500), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (5439, 150)
+typ: 180,  koordynaty: (6400, 899), cwiartki zajete: 1,2
 
-typ: 180,  koordynaty: (50, 300), cwiartki zajete: 3,4
+typ: 180,  koordynaty: (6900, 500), cwiartki zajete: 3,4
 
-typ: 180,  koordynaty: (550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (7300, 350)
 
-typ: 180,  koordynaty: (1050, 300), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (7500, 350)
 
-typ: 180,  koordynaty: (1550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (145, 450)
 
-typ: 180,  koordynaty: (2050, 300), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (435, 450)
 
-typ: 180,  koordynaty: (2550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (725, 450)
 
-typ: 180,  koordynaty: (3050, 300), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (1015, 450)
 
-typ: 180,  koordynaty: (3550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (1305, 450)
 
-typ: 180,  koordynaty: (4050, 300), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (1595, 450)
 
-typ: 180,  koordynaty: (4550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (1885, 450)
 
-typ: 180,  koordynaty: (5050, 300), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (2175, 450)
 
-typ: 180,  koordynaty: (5550, 699), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (2465, 450)
 
-typ: 90,   koordynaty: (5700, 0), cwiartka zajeta: 4
+typ: 360,  koordynaty: (2755, 450)
 
-typ: 90,   koordynaty: (6499, 0), cwiartka zajeta: 3
+typ: 90,   koordynaty: (0, 600), cwiartka zajeta: 4
 
-typ: 180,  koordynaty: (6099, 499), cwiartki zajete: 1,2
+typ: 90,   koordynaty: (899, 600), cwiartka zajeta: 3
 
-typ: 90,   koordynaty: (6500, 0), cwiartka zajeta: 4
+typ: 180,  koordynaty: (449, 1099), cwiartki zajete: 1,2
 
-typ: 90,   koordynaty: (6999, 499), cwiartka zajeta: 2
+typ: 90,   koordynaty: (900, 600), cwiartka zajeta: 4
 
-typ: 90,   koordynaty: (7000, 0), cwiartka zajeta: 4
+typ: 90,   koordynaty: (1399, 1099), cwiartka zajeta: 2
 
-typ: 90,   koordynaty: (7499, 499), cwiartka zajeta: 2
+typ: 90,   koordynaty: (1400, 600), cwiartka zajeta: 4
 
-typ: 90,   koordynaty: (7500, 0), cwiartka zajeta: 4
+typ: 90,   koordynaty: (1899, 1099), cwiartka zajeta: 2
 
-typ: 90,   koordynaty: (7999, 499), cwiartka zajeta: 2
+typ: 90,   koordynaty: (1900, 600), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (147, 900)
+typ: 90,   koordynaty: (2399, 1099), cwiartka zajeta: 2
 
-typ: 360,  koordynaty: (441, 900)
+typ: 90,   koordynaty: (2400, 600), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (735, 900)
+typ: 90,   koordynaty: (2899, 1099), cwiartka zajeta: 2
 
-typ: 360,  koordynaty: (1029, 900)
+typ: 180,  koordynaty: (4100, 500), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (1323, 900)
+typ: 180,  koordynaty: (4600, 899), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (1617, 900)
+typ: 180,  koordynaty: (5100, 500), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (1911, 900)
+typ: 360,  koordynaty: (5850, 1041)
 
-typ: 360,  koordynaty: (2205, 900)
+typ: 360,  koordynaty: (5850, 1324)
 
-typ: 360,  koordynaty: (2499, 900)
+typ: 360,  koordynaty: (5850, 1607)
 
-typ: 360,  koordynaty: (2793, 900)
+typ: 360,  koordynaty: (5850, 1890)
 
-typ: 360,  koordynaty: (3087, 900)
+typ: 360,  koordynaty: (5850, 2173)
 
-typ: 360,  koordynaty: (3381, 900)
+typ: 360,  koordynaty: (5850, 2456)
 
-typ: 360,  koordynaty: (3675, 900)
+typ: 360,  koordynaty: (6150, 1041)
 
-typ: 360,  koordynaty: (3969, 900)
+typ: 360,  koordynaty: (6150, 1324)
 
-typ: 360,  koordynaty: (4263, 900)
+typ: 360,  koordynaty: (6150, 1607)
 
-typ: 360,  koordynaty: (4557, 900)
+typ: 360,  koordynaty: (6150, 1890)
 
-typ: 360,  koordynaty: (4851, 900)
+typ: 360,  koordynaty: (6150, 2173)
 
-typ: 360,  koordynaty: (5145, 900)
+typ: 360,  koordynaty: (6150, 2456)
 
-typ: 360,  koordynaty: (5439, 900)
+typ: 360,  koordynaty: (3150, 1430)
 
-typ: 90,   koordynaty: (0, 1400), cwiartka zajeta: 4
+typ: 360,  koordynaty: (3150, 1690)
 
-typ: 90,   koordynaty: (499, 1899), cwiartka zajeta: 2
+typ: 360,  koordynaty: (3150, 1950)
 
-typ: 90,   koordynaty: (1700, 1400), cwiartka zajeta: 4
+typ: 360,  koordynaty: (3150, 2210)
 
-typ: 90,   koordynaty: (2599, 1400), cwiartka zajeta: 3
+typ: 360,  koordynaty: (3150, 2470)
 
-typ: 180,  koordynaty: (2149, 1899), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (3450, 1430)
 
-typ: 90,   koordynaty: (3800, 1400), cwiartka zajeta: 4
+typ: 360,  koordynaty: (3450, 1690)
 
-typ: 90,   koordynaty: (4699, 1400), cwiartka zajeta: 3
+typ: 360,  koordynaty: (3450, 1950)
 
-typ: 180,  koordynaty: (4249, 1899), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (3450, 2210)
 
-typ: 90,   koordynaty: (5500, 1400), cwiartka zajeta: 4
+typ: 360,  koordynaty: (3450, 2470)
 
-typ: 90,   koordynaty: (6299, 1400), cwiartka zajeta: 3
+typ: 360,  koordynaty: (3750, 1430)
 
-typ: 180,  koordynaty: (5899, 1899), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (3750, 1690)
 
-typ: 90,   koordynaty: (7200, 1400), cwiartka zajeta: 4
+typ: 360,  koordynaty: (3750, 1950)
 
-typ: 90,   koordynaty: (7999, 1400), cwiartka zajeta: 3
+typ: 360,  koordynaty: (3750, 2210)
 
-typ: 180,  koordynaty: (7599, 1899), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (3750, 2470)
 
-typ: 360,  koordynaty: (147, 2350)
+typ: 180,  koordynaty: (3900, 1450), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (441, 2350)
+typ: 180,  koordynaty: (4299, 1950), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (735, 2350)
+typ: 180,  koordynaty: (3900, 2450), cwiartki zajete: 1,4
 
-typ: 360,  koordynaty: (1029, 2350)
+typ: 90,   koordynaty: (600, 1400), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (1323, 2350)
+typ: 90,   koordynaty: (1399, 1400), cwiartka zajeta: 3
 
-typ: 360,  koordynaty: (1617, 2350)
+typ: 180,  koordynaty: (999, 1899), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (1911, 2350)
+typ: 180,  koordynaty: (250, 2200), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (2205, 2350)
+typ: 180,  koordynaty: (750, 2599), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (2499, 2350)
+typ: 180,  koordynaty: (1250, 2200), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (2793, 2350)
+typ: 180,  koordynaty: (1750, 2599), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (3087, 2350)
+typ: 180,  koordynaty: (2250, 2200), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (3381, 2350)
+typ: 180,  koordynaty: (2750, 2599), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (3675, 2350)
+typ: 180,  koordynaty: (4550, 2200), cwiartki zajete: 3,4
 
-typ: 360,  koordynaty: (3969, 2350)
+typ: 180,  koordynaty: (5050, 2599), cwiartki zajete: 1,2
 
-typ: 360,  koordynaty: (4263, 2350)
+typ: 360,  koordynaty: (6433, 2350)
 
-typ: 360,  koordynaty: (4557, 2350)
+typ: 360,  koordynaty: (6699, 2350)
 
-typ: 360,  koordynaty: (4851, 2350)
+typ: 360,  koordynaty: (6965, 2350)
 
-typ: 360,  koordynaty: (5145, 2350)
+typ: 360,  koordynaty: (7231, 2350)
 
-typ: 360,  koordynaty: (5439, 2350)
+typ: 360,  koordynaty: (7497, 2350)
 
-typ: 360,  koordynaty: (2933, 2650)
+typ: 360,  koordynaty: (7763, 2350)
 
-typ: 360,  koordynaty: (3199, 2650)
+typ: 360,  koordynaty: (6433, 2650)
 
-typ: 360,  koordynaty: (3465, 2650)
+typ: 360,  koordynaty: (6699, 2650)
 
-typ: 360,  koordynaty: (3731, 2650)
+typ: 360,  koordynaty: (6965, 2650)
 
-typ: 360,  koordynaty: (3997, 2650)
+typ: 360,  koordynaty: (7231, 2650)
 
-typ: 360,  koordynaty: (4263, 2650)
+typ: 360,  koordynaty: (7497, 2650)
 
-typ: 180,  koordynaty: (2850, 2800), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (7763, 2650)
 
-typ: 180,  koordynaty: (3350, 3199), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (6433, 2950)
 
-typ: 180,  koordynaty: (3850, 2800), cwiartki zajete: 3,4
+typ: 360,  koordynaty: (6699, 2950)
 
-typ: 180,  koordynaty: (4350, 3199), cwiartki zajete: 1,2
+typ: 360,  koordynaty: (6965, 2950)
 
-typ: 90,   koordynaty: (4500, 2500), cwiartka zajeta: 4
+typ: 360,  koordynaty: (7231, 2950)
 
-typ: 90,   koordynaty: (5099, 2999), cwiartka zajeta: 2
+typ: 360,  koordynaty: (7497, 2950)
 
-typ: 90,   koordynaty: (5100, 2500), cwiartka zajeta: 4
+typ: 360,  koordynaty: (7763, 2950)
 
-typ: 90,   koordynaty: (5599, 2999), cwiartka zajeta: 2
+typ: 360,  koordynaty: (3850, 2700)
 
-typ: 360,  koordynaty: (144, 3050)
+typ: 90,   koordynaty: (5700, 2700), cwiartka zajeta: 4
 
-typ: 360,  koordynaty: (432, 3050)
+typ: 90,   koordynaty: (5700, 3499), cwiartka zajeta: 1
 
-typ: 360,  koordynaty: (720, 3050)
+typ: 180,  koordynaty: (6199, 3099), cwiartki zajete: 2,3
 
-typ: 360,  koordynaty: (1008, 3050)
+typ: 360,  koordynaty: (6433, 3350)
 
-typ: 360,  koordynaty: (1296, 3050)
+typ: 360,  koordynaty: (6699, 3350)
 
-typ: 360,  koordynaty: (1584, 3050)
+typ: 360,  koordynaty: (6965, 3350)
 
-typ: 360,  koordynaty: (1872, 3050)
+typ: 360,  koordynaty: (7231, 3350)
 
-typ: 360,  koordynaty: (2160, 3050)
+typ: 360,  koordynaty: (7497, 3350)
 
-typ: 360,  koordynaty: (2448, 3050)
-
-typ: 360,  koordynaty: (144, 3350)
-
-typ: 360,  koordynaty: (432, 3350)
-
-typ: 360,  koordynaty: (720, 3350)
-
-typ: 360,  koordynaty: (1008, 3350)
-
-typ: 360,  koordynaty: (1296, 3350)
-
-typ: 360,  koordynaty: (1584, 3350)
-
-typ: 360,  koordynaty: (1872, 3350)
-
-typ: 360,  koordynaty: (2160, 3350)
-
-typ: 360,  koordynaty: (2448, 3350)
-
-typ: 90,   koordynaty: (0, 3500), cwiartka zajeta: 4
-
-typ: 90,   koordynaty: (599, 3999), cwiartka zajeta: 2
-
-typ: 90,   koordynaty: (600, 3500), cwiartka zajeta: 4
-
-typ: 90,   koordynaty: (1099, 3999), cwiartka zajeta: 2
-
-typ: 90,   koordynaty: (1100, 3500), cwiartka zajeta: 4
-
-typ: 90,   koordynaty: (1599, 3999), cwiartka zajeta: 2
-
-typ: 90,   koordynaty: (1600, 3500), cwiartka zajeta: 4
-
-typ: 90,   koordynaty: (2099, 3999), cwiartka zajeta: 2
-
-typ: 90,   koordynaty: (2100, 3500), cwiartka zajeta: 4
-
-typ: 90,   koordynaty: (2599, 3999), cwiartka zajeta: 2
-
-typ: 360,  koordynaty: (2833, 3300)
-
-typ: 360,  koordynaty: (3099, 3300)
-
-typ: 360,  koordynaty: (3365, 3300)
-
-typ: 360,  koordynaty: (2800, 3500)
-
-typ: 360,  koordynaty: (2733, 3900)
-
-typ: 360,  koordynaty: (2999, 3900)
-
-typ: 360,  koordynaty: (3265, 3900)
+typ: 360,  koordynaty: (7763, 3350)
 
