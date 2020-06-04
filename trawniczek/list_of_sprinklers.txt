@@ -1,4 +1,128 @@
-Liczba wszytskich podlewaczek: 10
+Liczba wszytskich podlewaczek: 72
+
+typ: 360,  koordynaty: (200, 200)
+
+typ: 360,  koordynaty: (200, 500)
+
+typ: 360,  koordynaty: (200, 800)
+
+typ: 360,  koordynaty: (200, 1100)
+
+typ: 360,  koordynaty: (200, 1400)
+
+typ: 360,  koordynaty: (200, 1700)
+
+typ: 360,  koordynaty: (200, 2000)
+
+typ: 360,  koordynaty: (200, 2300)
+
+typ: 360,  koordynaty: (200, 2600)
+
+typ: 360,  koordynaty: (200, 2900)
+
+typ: 360,  koordynaty: (200, 3200)
+
+typ: 360,  koordynaty: (200, 3500)
+
+typ: 360,  koordynaty: (200, 3800)
+
+typ: 360,  koordynaty: (600, 200)
+
+typ: 360,  koordynaty: (600, 491)
+
+typ: 360,  koordynaty: (600, 782)
+
+typ: 360,  koordynaty: (600, 1073)
+
+typ: 360,  koordynaty: (600, 1364)
+
+typ: 360,  koordynaty: (600, 1655)
+
+typ: 360,  koordynaty: (600, 1946)
+
+typ: 360,  koordynaty: (600, 2237)
+
+typ: 360,  koordynaty: (600, 2528)
+
+typ: 360,  koordynaty: (600, 2819)
+
+typ: 360,  koordynaty: (600, 3110)
+
+typ: 360,  koordynaty: (600, 3401)
+
+typ: 360,  koordynaty: (600, 3692)
+
+typ: 360,  koordynaty: (1000, 200)
+
+typ: 360,  koordynaty: (1000, 509)
+
+typ: 360,  koordynaty: (1000, 818)
+
+typ: 360,  koordynaty: (1000, 1127)
+
+typ: 360,  koordynaty: (1000, 1436)
+
+typ: 360,  koordynaty: (1000, 1745)
+
+typ: 360,  koordynaty: (1000, 2054)
+
+typ: 360,  koordynaty: (1000, 2363)
+
+typ: 360,  koordynaty: (1000, 2672)
+
+typ: 360,  koordynaty: (1000, 2981)
+
+typ: 360,  koordynaty: (1000, 3290)
+
+typ: 360,  koordynaty: (1000, 3599)
+
+typ: 360,  koordynaty: (1400, 200)
+
+typ: 360,  koordynaty: (1400, 500)
+
+typ: 360,  koordynaty: (1400, 800)
+
+typ: 360,  koordynaty: (1400, 1100)
+
+typ: 360,  koordynaty: (1400, 1400)
+
+typ: 360,  koordynaty: (1400, 1700)
+
+typ: 360,  koordynaty: (1400, 2000)
+
+typ: 360,  koordynaty: (1400, 2300)
+
+typ: 360,  koordynaty: (1400, 2600)
+
+typ: 360,  koordynaty: (1400, 2900)
+
+typ: 360,  koordynaty: (1400, 3200)
+
+typ: 360,  koordynaty: (1400, 3500)
+
+typ: 360,  koordynaty: (1800, 200)
+
+typ: 360,  koordynaty: (1800, 490)
+
+typ: 360,  koordynaty: (1800, 780)
+
+typ: 360,  koordynaty: (1800, 1070)
+
+typ: 360,  koordynaty: (1800, 1360)
+
+typ: 360,  koordynaty: (1800, 1650)
+
+typ: 360,  koordynaty: (1800, 1940)
+
+typ: 360,  koordynaty: (1800, 2230)
+
+typ: 360,  koordynaty: (1800, 2520)
+
+typ: 360,  koordynaty: (1800, 2810)
+
+typ: 360,  koordynaty: (1800, 3100)
+
+typ: 360,  koordynaty: (1800, 3390)
 
 typ: 90,   koordynaty: (52, 10), cwiartka zajeta: 1
 

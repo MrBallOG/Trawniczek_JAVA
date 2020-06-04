@@ -8,6 +8,8 @@ import java.util.concurrent.BlockingQueue;
 import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 
+import jdk.tools.jaotc.ELFMacroAssembler;
+
 public class PositionSprinklers implements Runnable{
 
 	private boolean running = true;
@@ -25,7 +27,7 @@ public class PositionSprinklers implements Runnable{
 		this.set_rebounds = rebounds;
 		this.q = q;
 		sprlist = new ArrayList<Sprinkler>();
-		// funkcja ustawiajaca podlewaczki
+		scanTheLawnForRectangles();
 	}
 
 	/*
@@ -44,7 +46,7 @@ public class PositionSprinklers implements Runnable{
 				num = 0;
 			}
 			if(iteration_number == 0)
-				position();   //addSprinklers();  
+				addSprinklers();  
 			else
 				incrementField(iteration_number);
 			
@@ -120,40 +122,6 @@ public class PositionSprinklers implements Runnable{
 	}
 	
 	/*
-	 *  282 is 400(diameter) divided by square root of 2, it is used to minimize gaps between circles
-	 *  subtract 400 to make sure that first and last circle in row or column can fit
-	 */
-	public void position() {  					//dodawaj do sprlist kolejne podelwaczki, trza zrobi�
-		/*
-		int countx = (lawn[0].length-400) / 282;                        
-		int county = (lawn.length-400) / 282;							
-		int rx = countx > 0 ? ((lawn[0].length-400) % 282)/countx : 0;	
-		int ry = county > 0 ? ((lawn.length-400) % 282)/county : 0;	
-		
-		int x0 = 200;
-		int y0 = 200;
-		
-		while(y0<=lawn.length-200) {
-			while(x0<=lawn[0].length-200) {	
-				if(lawn[y0][x0] != 0)
-					for(int yc = -200; yc<200; yc++)        
-						for(int xc = -200; xc<200; xc++) 
-							if(xc*xc+yc*yc <= 200*200) 
-								if(lawn[y0+yc][x0+xc] != 0)
-									lawn[y0+yc][x0+xc]+=10;
-				x0+=282+rx;
-			}
-				x0 = 200;
-				y0+=282+ry;
-			}
-			*/
-		scanTheLawnForRectangles();
-		Sprinkler s = new Sprinkler(270, 1000, 600, 4);
-		s.putSprinkler(lawn, set_rebounds);
-						
-	}
-
-	/*
 	 *	Iterates on lawn to find possible rectangles to put sprinklers in
 	 */
 	public void scanTheLawnForRectangles()
@@ -184,7 +152,7 @@ public class PositionSprinklers implements Runnable{
 							rect_x = scanHorizontalSize(rect_y, x0, y0, pixels_distance);
 							fillRectangleHorizontaly(rect_x, rect_y, x0, y0);
 						}
-						//System.out.println("[x|y]: " + rect_x + ", " + rect_y + " range: [" + x0/pixels_distance + "-" + (x0/pixels_distance + rect_x-1) + "]:[" + y0/pixels_distance + "-" + (y0/pixels_distance + rect_y-1) + "]");
+						System.out.println("[x|y]: " + rect_x + ", " + rect_y + " range: [" + x0/pixels_distance + "-" + (x0/pixels_distance + rect_x-1) + "]:[" + y0/pixels_distance + "-" + (y0/pixels_distance + rect_y-1) + "]");
 						
 					}
 				}
@@ -314,11 +282,179 @@ public class PositionSprinklers implements Runnable{
 
 	private void fillRectangleVerticaly(int H, int V, int x0, int y0)
 	{
-		
+		if (H == 2 || H == 3)
+		{
+			int x = (x0 + x0 + H * 100)/2;
+			int sy = y0 ;
+			int ey = y0 + V * 100;
+			int ry = (ey - sy - 1)/300 + 1;
+			int jump;
+			int y;
+			if (ry > 1)
+			{
+				y = sy + 100;
+				jump = (ey - sy - 200) / (ry - 1);
+			}
+			else
+			{
+				jump = (ey - sy) / 2;
+				y = y0 + jump;
+			}
+			for (int i = 0; i < ry; i++)
+			{
+				sprlist.add(new Sprinkler(360, x, y));
+				y += jump;
+			}
+		}
+		if (H == 4)
+		{
+			int x1 = x0;
+			int x2 = x0 + 399;
+			int sy = y0 ;
+			int ey = y0 + V * 100;
+			int ry = (V - 2) / 5 + 1;
+			int jump;
+			int y;
+			if (ry > 1)
+			{
+				int offset = (V - 5 * (ry - 1)) * 50;
+				y = y0 + offset;
+				jump = 500;
+			}
+			else
+			{
+				jump = (ey - sy) / 2;
+				y = y0 + jump;
+			}
+			for (int i = 0; i < ry; i++)
+			{
+				if (i % 2 == 0)
+				{
+					sprlist.add(new Sprinkler(180, x1, y, 14));
+				}
+				else
+				{
+					sprlist.add(new Sprinkler(180, x2, y, 23));
+				}
+				y += jump;
+			}
+		}
+		if (H == 5)
+		{
+			int mod5 = V % 5;
+			if (mod5 <= 2)
+			{
+				sprlist.add(new Sprinkler(90, x0, y0, 4));
+				sprlist.add(new Sprinkler(90, x0 + 499, y0 + 499 + 100 * mod5, 2));
+				if (V-5-mod5 >= 5)
+				{
+					fillRectangleVerticaly(H, V - 5 - mod5, x0, y0 + 500 + 100 * mod5);
+				}
+			}
+			else
+			{
+				sprlist.add(new Sprinkler(90, x0, y0, 4));
+				sprlist.add(new Sprinkler(90, x0, y0 + 499 + 100 * mod5, 1));
+				sprlist.add(new Sprinkler(180, x0 + 499 , (y0 +y0 + 499 + 100 * mod5 ) / 2, 23));
+				if (V-5-mod5 >= 5)
+				{
+					fillRectangleVerticaly(H, V - 5 - mod5, x0, y0 + 500 + 100 * mod5);
+				}
+			}
+		}
+		if (H >= 6)
+		{
+			fillRectangleVerticaly(3, V, x0, y0);
+			fillRectangleVerticaly(H - 3, V, x0 + 300, y0);
+		}
 	}
 
 	private void fillRectangleHorizontaly(int H, int V, int x0, int y0)
 	{
-		
+		if (V == 2 || V == 3)
+		{
+			int y = (y0 + y0 + V * 100)/2;
+			int sx = x0 ;
+			int ex = x0 + H * 100;
+			int rx = (ex - sx - 1)/300 + 1;
+			int jump;
+			int x;
+			if (rx > 1)
+			{
+				x = sx + 100;
+				jump = (ex - sx - 200) / (rx - 1);
+			}
+			else
+			{
+				jump = (ex - sx) / 2;
+				x = x0 + jump;
+			}
+			for (int i = 0; i < rx; i++)
+			{
+				sprlist.add(new Sprinkler(360, x, y));
+				x += jump;
+			}
+		}
+		if (H == 4)
+		{
+			int y1 = y0;
+			int y2 = y0 + 399;
+			int sx = x0 ;
+			int ex = x0 + H * 100;
+			int rx = (H - 2) / 5 + 1;
+			int jump;
+			int x;
+			if (rx > 1)
+			{
+				int offset = (H - 5 * (rx - 1)) * 50;
+				x = x0 + offset;
+				jump = 500;
+			}
+			else
+			{
+				jump = (ex - sx) / 2;
+				x = x0 + jump;
+			}
+			for (int i = 0; i < rx; i++)
+			{
+				if (i % 2 == 0)
+				{
+					sprlist.add(new Sprinkler(180, x, y1, 34));
+				}
+				else
+				{
+					sprlist.add(new Sprinkler(180, x, y2, 12));
+				}
+				x += jump;
+			}
+		}
+		if (H == 5)
+		{
+			int mod5 = H % 5;
+			if (mod5 <= 2)
+			{
+				sprlist.add(new Sprinkler(90, x0, y0, 4));
+				sprlist.add(new Sprinkler(90, x0 + 499 + 100 * mod5, y0 + 499 , 2));
+				if (H-5-mod5 >= 5)
+				{
+					fillRectangleVerticaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
+				}
+			}
+			else
+			{
+				sprlist.add(new Sprinkler(90, x0, y0, 4));
+				sprlist.add(new Sprinkler(90, x0 + 499 + 100 * mod5, y0 , 1));
+				sprlist.add(new Sprinkler(180, (x0 + x0 + 499 + 100 * mod5) / 2, y0 + 499, 12));
+				if (H-5-mod5 >= 5)
+				{
+					fillRectangleVerticaly(H - 5 - mod5, V , x0 + 500 + 100 * mod5, y0 );
+				}
+			}
+		}
+		if (H >= 6)
+		{
+			fillRectangleVerticaly(H, 3, x0, y0);
+			fillRectangleVerticaly(H, V - 3, x0 , y0 + 300);
+		}
 	}
 }
